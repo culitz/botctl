@@ -65,6 +65,17 @@ bool BaseObject::get(string key, string& value, string default_value) const
     return true;
 }
 
+bool BaseObject::get(string key, bool default_value) const
+{
+    string value;
+    if(get(key, value, string{}))
+    {
+        bool result = (value == "true") ? true : false;
+        return result;
+    }
+    return default_value;
+}
+
 std::shared_ptr<ptree> BaseObject::getPtree() const
 {
     std::shared_ptr<ptree> pt = std::shared_ptr<ptree>( new ptree );
@@ -87,6 +98,11 @@ std::shared_ptr<ptree> BaseObject::getPtree() const
             string value = get(field, string{});
             pt->add<string>(field, value);
         }
+        else if(p.second == Types::BOOL)
+        {
+            bool value = get(field, bool{});
+            pt->add<bool>(field, value);
+        }
         else if(p.second == Types::OBJECT)
         {
             BaseObject value = get(field, BaseObject{});
@@ -107,6 +123,41 @@ std::string BaseObject::toString() const
     std::stringstream ss;
     boost::property_tree::write_json(ss, *getPtree(), false);
     return ss.str();
+}
+
+size_t BaseObject::hash() const
+{
+    size_t hash = std::hash<int>{}(0);
+    for(const string& field: mFields)
+    {
+        DataMap::const_iterator iter = find(field);
+        std::pair<string, int> p = iter->second;
+        if(p.second == Types::INTEGER)
+        {
+            int value = get(field, int{});
+            size_t h = std::hash<int>{}(value);
+            hash = hash ^ (h << 1);
+        }
+        else if(p.second == Types::FLOAT)
+        {
+            float value = get(field, float{});
+            size_t h = std::hash<float>{}(value);
+            hash = hash ^ (h << 1);
+        }
+        else if(p.second == Types::STRING)
+        {
+            string value = get(field, string{});
+            size_t h = std::hash<string>{}(value);
+            hash = hash ^ (h << 1);
+        }
+        else if(p.second == Types::OBJECT)
+        {
+            BaseObject value = get(field, BaseObject{});
+            size_t h = value.hash();
+            hash = hash ^ (h << 1);
+        }
+    }
+    return hash;
 }
 
 void BaseObject::fromString(const string& object)

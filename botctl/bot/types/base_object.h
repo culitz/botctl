@@ -14,8 +14,10 @@ namespace bot::types {
 typedef std::string string;
 typedef boost::property_tree::ptree ptree;
 typedef std::map<string, std::pair<string, int>> DataMap;
+
 enum Types
 {
+    BOOL,
     INTEGER,
     FLOAT,
     STRING,
@@ -49,6 +51,8 @@ private:
 
     /// Redefenition of operator << need for serialize BaseObject to json
     friend std::ostream& operator<<(std::ostream& os, const BaseObject& b);
+    friend bool operator==(const BaseObject& left, const BaseObject& right);
+    friend bool operator!=(const BaseObject& left, const BaseObject& right);
 public:
     inline static const std::string ID_NAME {"id"};
     BaseObject() : DataMap() { mFields = {ID_NAME}; }
@@ -64,33 +68,42 @@ public:
     void add(string key, T item)
     {
         std::stringstream ss;
-        ss << item;
 
         /// fill metadata to value
         int type;
         if(std::is_same<string, T>::value)
+        {
             type = Types::STRING;
+            ss << item;
+        }
         else if( std::is_same<int, T>::value)
+        {
             type = Types::INTEGER;
+            ss << item;
+        }
         else if( std::is_same<float, T>::value)
+        {
             type = Types::FLOAT;
+            ss << item;
+        }
+        else if( std::is_same<bool, T>::value)
+        {
+            type = Types::BOOL;
+            ss << item;
+            string serialized_value = ss.str();
+            string json_value = (serialized_value == "1") ? "true": "false";
+            ss.str(string{});
+            ss << json_value;
+        }
         else
+        {
             type = Types::OBJECT;
+            ss << item;
+        }
 
         /// {value, metadata}
         std::pair<string, int> data = {ss.str(), type};
         insert(std::make_pair(key, data));
-    }
-
-    /**
-     * @brief add
-     * Add field to type-object
-     */
-    template <typename T>
-    void addOpt(string key, std::optional<T> value)
-    {
-        if(value.has_value())
-            add(key, T{});
     }
 
     /**
@@ -102,6 +115,7 @@ public:
     */
     bool get(string key, string& value, string default_value) const;
 
+    bool get(string key, bool default_value) const;
     int get(string key, int default_value) const;
     double get(string key, double default_value) const;
     string get(string key, string default_value) const;
@@ -161,12 +175,24 @@ public:
      * @return
      */
     virtual std::string toString() const;
+
+    virtual size_t hash() const;
 };
 
 inline std::ostream& operator<<(std::ostream& os, const BaseObject& b)
 {
     os << b.toString();
     return os;
+}
+
+inline bool operator==(const BaseObject& left, const BaseObject& right)
+{
+    return left.hash() == right.hash();
+}
+
+inline bool operator!=(const BaseObject& left, const BaseObject& right)
+{
+    return left.hash() != right.hash();
 }
 
 }

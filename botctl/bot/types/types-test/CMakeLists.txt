@@ -17,8 +17,10 @@ add_executable(
     types_test
     "base_type_test.cpp"
     "chat_type_test.cpp"
+    "user_type_test.cpp"
     "../base_object.cpp"
     "../chat.cpp"
+    "../user.cpp"
 )
 
 target_link_libraries(types_test GTest::GTest GTest::Main)

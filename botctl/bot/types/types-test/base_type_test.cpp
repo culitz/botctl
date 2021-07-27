@@ -97,7 +97,7 @@ TEST(type_base_object, add_string)
     std::string field = "f";
     BaseObject b;
     b.add<std::string>(field, value0);
-    std::string value1 = b.get(field, "0");
+    std::string value1 = b.get(field, std::string{0});
     ASSERT_EQ(value0, value1);
 }
 
@@ -147,4 +147,16 @@ TEST(type_base_object, using_opt_string)
 
     std::optional<std::string> opt_val = b.get<std::string>(field);
     ASSERT_EQ(value0, opt_val.value());
+}
+
+TEST(type_base_object, equal_test)
+{
+    auto b0 = std::shared_ptr<BaseObject>( new BaseObject{0} );
+    auto b1 = std::shared_ptr<BaseObject>( new BaseObject{0} );
+    auto b2 = std::shared_ptr<BaseObject>( new BaseObject{1} );
+
+    bool is_eq = (*b0 == *b1);
+    bool is_ne = (*b0 != *b2);
+    ASSERT_EQ(is_eq, true) << b0->hash() << " " << b1->hash();
+    ASSERT_EQ(is_ne, true) << b0->hash() << " " << b2->hash();;
 }
