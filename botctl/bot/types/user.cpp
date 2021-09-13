@@ -44,12 +44,12 @@ User::~User()
 
 bool User::isBot()
 {
-    return get(User::IS_BOT, false);
+    return get<bool>(User::IS_BOT, false);
 }
 
 string User::getFirstName()
 {
-    return get(User::FIRST_NAME, string());
+    return get<string>(User::FIRST_NAME, string());
 }
 
 std::optional<string> User::getLastName()
@@ -69,17 +69,17 @@ std::optional<string> User::getLanguageCode()
 
 bool User::canJoinGroups()
 {
-    return get(User::CAN_JOIN_GROUPS, false);
+    return get<bool>(User::CAN_JOIN_GROUPS, false);
 }
 
 bool User::canReadAllGroupMessages()
 {
-    return get(User::CAN_READ_ALL_GROUP_MESSAGES, false);
+    return get<bool>(User::CAN_READ_ALL_GROUP_MESSAGES, false);
 }
 
 bool User::supportInlineQueries()
 {
-    return get(User::SUPPORT_INLINE_QUERIES, false);
+    return get<bool>(User::SUPPORT_INLINE_QUERIES, false);
 }
 
 }

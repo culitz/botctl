@@ -50,7 +50,7 @@ TEST(type_user, get_id)
     ASSERT_EQ(createObject()->getId(), TEST_ID);
 }
 
-TEST(type, get_username)
+TEST(type_user, get_username)
 {
     string username = createObject()->getUserName().value();
     ASSERT_EQ(username, TEST_USERNAME) << username << " != " << TEST_USERNAME ;

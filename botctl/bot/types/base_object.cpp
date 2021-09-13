@@ -3,6 +3,15 @@
 namespace bot::types {
 
 
+void BaseObject::init(ptree& pt)
+{
+    for(string& field: mFields)
+    {
+        string value = pt.get<string>(field);
+        add<string>(field, value);
+    }
+}
+
 BaseObject::BaseObject(int id) : DataMap()
 {
     mFields = {ID_NAME};
@@ -49,6 +58,11 @@ BaseObject BaseObject::get(string key, BaseObject default_value) const
         return b;
     }
     return default_value;
+}
+
+std::vector<BaseObject> BaseObject::get(string key, std::vector<BaseObject> default_value) const
+{
+
 }
 
 bool BaseObject::get(string key, string& value, string default_value) const

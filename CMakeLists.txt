@@ -21,6 +21,7 @@ add_executable(
     "botctl/bot/types/base_object.cpp"
     "botctl/bot/types/chat.cpp"
     "botctl/bot/types/user.cpp"
+    "botctl/bot/types/message.cpp"
 )
 
 target_link_libraries(cbot pthread)

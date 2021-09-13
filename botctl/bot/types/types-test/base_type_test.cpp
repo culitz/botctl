@@ -76,18 +76,17 @@ TEST(type_base_object, add_int)
     std::string field = "f";
     BaseObject b;
     b.add<int>(field, value0);
-    int value1 = b.get(field, 0);
+    int value1 = b.get<int>(field, 0);
     ASSERT_EQ(value0, value1);
 }
 
-TEST(type_base_object, add_float)
+TEST(type_base_object, add_double)
 {
     double value0 = 22;
     std::string field = "f";
-    float dv = 0;
     BaseObject b;
-    b.add<float>(field, value0);
-    float value1 = b.get(field, dv);
+    b.add<double>(field, value0);
+    double value1 = b.get<double>(field, 0);
     ASSERT_EQ(value0, value1);
 }
 
@@ -97,7 +96,7 @@ TEST(type_base_object, add_string)
     std::string field = "f";
     BaseObject b;
     b.add<std::string>(field, value0);
-    std::string value1 = b.get(field, std::string{0});
+    std::string value1 = b.get<std::string>(field, std::string{0});
     ASSERT_EQ(value0, value1);
 }
 
@@ -109,7 +108,7 @@ TEST(type_base_object, add_baseobject)
     BaseObject parent;
     parent.add<BaseObject>(field, child);
 
-    BaseObject child_result = parent.get(field, BaseObject{0});
+    BaseObject child_result = parent.get<BaseObject>(field, BaseObject{0});
     ASSERT_EQ(child.getId(), child_result.getId());
 }
 
@@ -159,4 +158,26 @@ TEST(type_base_object, equal_test)
     bool is_ne = (*b0 != *b2);
     ASSERT_EQ(is_eq, true) << b0->hash() << " " << b1->hash();
     ASSERT_EQ(is_ne, true) << b0->hash() << " " << b2->hash();;
+}
+
+TEST(type_base_object, template_get_test)
+{
+//    BaseObject b;
+
+//    BaseObject child;
+//    child.add<std::string>("name", "child");
+
+//    b.add<std::string>("s", "text");
+//    b.add<int>("i", 0);
+//    b.add<BaseObject>("bo", child);
+
+
+//    int i = b.get_or<int>("i", -1);
+//    std::string s = b.get_or<std::string>("s", "no text");
+//    BaseObject child0 = b.get_or<BaseObject>("bo", BaseObject());
+//    bool equal = (child == child);
+
+//    ASSERT_EQ(i, 0);
+//    ASSERT_EQ(s, "text");
+//    ASSERT_TRUE(equal);
 }

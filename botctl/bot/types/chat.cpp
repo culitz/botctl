@@ -47,16 +47,12 @@ Chat::Chat(ptree& pt)
         LOCATION
     };
 
-    for(string& field: mFields)
-    {
-        string value = pt.get<string>(field);
-        add<string>(field, value);
-    }
+    init(pt);
 }
 
 string Chat::getType() const
 {
-    return get(TYPE, string{});
+    return get<string>(TYPE, string{});
 }
 
 void Chat::setType(const string& type)
@@ -66,7 +62,7 @@ void Chat::setType(const string& type)
 
 std::optional<string> Chat::getTitle() const
 {
-    return get(TITLE, string());
+    return get<string>(TITLE, string());
 }
 
 void Chat::setTitle(const string title)
@@ -76,7 +72,7 @@ void Chat::setTitle(const string title)
 
 std::optional<string> Chat::getUsername() const
 {
-    return get(USERNAME, string());
+    return get<string>(USERNAME, string());
 }
 
 void Chat::setUsername(const string username)
@@ -86,7 +82,7 @@ void Chat::setUsername(const string username)
 
 std::optional<string> Chat::getFirstName() const
 {
-    return get(FIRSTNAME, string());
+    return get<string>(FIRSTNAME, string());
 }
 
 void Chat::setFirstName(const string firstName)
@@ -96,7 +92,7 @@ void Chat::setFirstName(const string firstName)
 
 std::optional<string> Chat::getLastName() const
 {
-    return get(LASTNAME, string());
+    return get<string>(LASTNAME, string());
 }
 
 void Chat::setLastName(const string value)
@@ -106,7 +102,7 @@ void Chat::setLastName(const string value)
 
 std::optional<BaseObject> Chat::getPhoto() const
 {
-    return get(PHOTO, BaseObject{});
+    return get<BaseObject>(PHOTO, BaseObject{});
 }
 
 void Chat::setPhoto(const BaseObject& photo)
@@ -116,7 +112,7 @@ void Chat::setPhoto(const BaseObject& photo)
 
 std::optional<string> Chat::getBio() const
 {
-    return get(BIO, string());
+    return get<string>(BIO, string());
 }
 
 void Chat::setBio(const string bio)
@@ -126,7 +122,7 @@ void Chat::setBio(const string bio)
 
 std::optional<string> Chat::getDescription() const
 {
-    return get(DESCRIPTION, string());
+    return get<string>(DESCRIPTION, string());
 }
 
 void Chat::setDescription(const string description)
@@ -136,7 +132,7 @@ void Chat::setDescription(const string description)
 
 std::optional<string> Chat::getInviteLink() const
 {
-    return get(INVITE_LINK, string());
+    return get<string>(INVITE_LINK, string());
 }
 
 void Chat::setInviteLink(const string inviteLink)
@@ -146,7 +142,7 @@ void Chat::setInviteLink(const string inviteLink)
 
 std::optional<BaseObject> Chat::getPinnedMessage() const
 {
-    return get(PINNED_MESSAGE, BaseObject{});
+    return get<BaseObject>(PINNED_MESSAGE, BaseObject{});
 }
 
 void Chat::setPinnedMessage(const BaseObject& value)
@@ -156,7 +152,7 @@ void Chat::setPinnedMessage(const BaseObject& value)
 
 std::optional<BaseObject> Chat::getPermissions() const
 {
-    return get(PERMISSIONS, BaseObject{});
+    return get<BaseObject>(PERMISSIONS, BaseObject{});
 }
 
 void Chat::setPermissions(const BaseObject& permissions)
@@ -166,7 +162,7 @@ void Chat::setPermissions(const BaseObject& permissions)
 
 std::optional<int> Chat::getSlowModeDelay() const
 {
-    return get(SLOW_MODE_DELAY, -1);
+    return get<int>(SLOW_MODE_DELAY, -1);
 }
 
 void Chat::setSlowModeDelay(const int slowModeDelay)
@@ -176,7 +172,7 @@ void Chat::setSlowModeDelay(const int slowModeDelay)
 
 std::optional<int> Chat::getMessageAutoDeleteTime() const
 {
-    return get(MESSAGE_AUTO_DELETE_TIME, 0);
+    return get<int>(MESSAGE_AUTO_DELETE_TIME, 0);
 }
 
 void Chat::setMessageAutoDeleteTime(const int messageAutoDeleteTime)
@@ -186,7 +182,7 @@ void Chat::setMessageAutoDeleteTime(const int messageAutoDeleteTime)
 
 std::optional<string> Chat::getStickerSetName() const
 {
-    return get(STICKER_SET_NAME, string());
+    return get<string>(STICKER_SET_NAME, string());
 }
 
 void Chat::setStickerSetName(const string stickerSetName)
@@ -196,7 +192,7 @@ void Chat::setStickerSetName(const string stickerSetName)
 
 std::optional<bool> Chat::getCanSetStickerSet() const
 {
-    return get(CAN_SET_STICKER_SET, false);
+    return get<bool>(CAN_SET_STICKER_SET, false);
 }
 
 void Chat::setCanSetStickerSet(const bool canSetStickerSet)
@@ -216,7 +212,7 @@ void Chat::setLinkedChatId(const int linkedChatId)
 
 std::optional<BaseObject> Chat::getLocation() const
 {
-    return get(LOCATION, BaseObject{});
+    return get<BaseObject>(LOCATION, BaseObject{});
 }
 
 void Chat::setLocation(const BaseObject& location)

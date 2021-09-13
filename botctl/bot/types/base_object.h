@@ -43,6 +43,9 @@ protected:
     /// Filling always in construsctor
     std::vector<string> mFields;
 
+    /// Filling DataMap from mFields
+    void init(ptree& pt);
+
 private:
     typedef std::map<string, string> Parent;
 
@@ -53,6 +56,22 @@ private:
     friend std::ostream& operator<<(std::ostream& os, const BaseObject& b);
     friend bool operator==(const BaseObject& left, const BaseObject& right);
     friend bool operator!=(const BaseObject& left, const BaseObject& right);
+
+    /**
+    * @brief get
+    * Getting data by key from type-object
+    * @param key - keyword
+    * @param default_value - method return value if keyword not exist
+    * @return T
+    */
+    bool get(string key, string& value, string default_value) const;
+    bool get(string key, bool default_value) const;
+    int get(string key, int default_value) const;
+    double get(string key, double default_value) const;
+    string get(string key, string default_value) const;
+    BaseObject get(string key, BaseObject default_value ) const;
+    std::vector<BaseObject> get(string key, std::vector<BaseObject> default_value) const;
+
 public:
     inline static const std::string ID_NAME {"id"};
     BaseObject() : DataMap() { mFields = {ID_NAME}; }
@@ -106,27 +125,18 @@ public:
         insert(std::make_pair(key, data));
     }
 
-    /**
-    * @brief get
-    * Getting data by key from type-object
-    * @param key - keyword
-    * @param default_value - method return value if keyword not exist
-    * @return T
-    */
-    bool get(string key, string& value, string default_value) const;
-
-    bool get(string key, bool default_value) const;
-    int get(string key, int default_value) const;
-    double get(string key, double default_value) const;
-    string get(string key, string default_value) const;
-    BaseObject get(string key, BaseObject default_value ) const;
-
     template<typename T>
     std::optional<T> get(string const key) const
     {
         T tmp;
         std::optional<T> opt = get(key, tmp);
         return opt;
+    }
+
+    template<typename T>
+    T get(string const key, T default_value) const
+    {
+        return get(key, default_value);
     }
 
     template<typename T>
