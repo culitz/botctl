@@ -81,8 +81,6 @@ protected:
     virtual void fillObject(Document& document);
 
 private:
-    typedef std::map<string, string> Parent;
-
     operator int() const { return -1; }
     operator std::string() { return toString(); }
 

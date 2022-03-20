@@ -28,11 +28,13 @@ add_executable(
     cbot
     main.cpp
     "botctl/bot/types/base_object.cpp"
+    "botctl/bot/types/base_file.cpp"
     "botctl/bot/types/chat.cpp"
     "botctl/bot/types/user.cpp"
     "botctl/bot/types/message.cpp"
     "botctl/bot/types/message_id.cpp"
     "botctl/bot/types/message_entity.cpp"
+    "botctl/bot/types/photo_size.cpp"
 )
 target_link_libraries(cbot gflags pthread ${SRC_CC})
 add_dependencies(cbot rapidjson)

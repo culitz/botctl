@@ -16,17 +16,22 @@ include_directories(
 add_executable(
     types_test
     "base_type_test.cpp"
+    "base_file_test.cpp"
     "chat_type_test.cpp"
     "user_type_test.cpp"
     "message_type_test.cpp"
     "message_id_type_test.cpp"
     "message_entity_type_test.cpp"
+    "photo_size_test.cpp"
+
     "../base_object.cpp"
+    "../base_file.cpp"
     "../chat.cpp"
     "../user.cpp"
     "../message.cpp"
     "../message_id.cpp"
     "../message_entity.cpp"
+    "../photo_size.cpp"
 )
 
 target_link_libraries(types_test GTest::GTest GTest::Main)

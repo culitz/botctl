@@ -5,8 +5,8 @@
 #include "rapidjson/stringbuffer.h"
 
 
-namespace test_user_type {
-
+namespace test_user_type
+{
 
 using User = bot::types::User;
 using string = std::string;
