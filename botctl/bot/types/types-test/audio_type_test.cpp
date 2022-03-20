@@ -1,12 +1,15 @@
-#include <iostream>
-#include "botctl/bot/types/base_file.h"
 #include <sstream>
-#include "botctl/bot/types/animation.h"
+#include <gtest/gtest.h>
+#include "../audio.h"
+#include "rapidjson/document.h"
 
 
-int main()
+namespace test_audio_type 
 {
-       int size = 10;
+
+TEST(type_base_object, initialize)
+{
+    int size = 10;
     int duration = 20;
     int width = 30;
     int height = 40;
@@ -20,6 +23,7 @@ int main()
     std::string thumb_file_id = "thumb_file_id";
     std::string thumb_file_unique_id = "thumb_file_unique_id";
     std::string performer = "performer";
+    std::string title = "title";
 
     std::stringstream ss;
     ss << "{\n"
@@ -29,8 +33,8 @@ int main()
        << "\"file_name\": " << "\"" << file_name << "\", \n"
        << "\"mime_type\": " << "\"" << mime_type << "\", \n"
        << "\"duration\": " << std::to_string(duration) << ", \n"
-       << "\"performer\": " << "\"" << performer << "\", \n"
-       << "\"title\": " << std::to_string(height) << ",\n"
+       << "\t\"performer\": " << "\"" << performer << "\", \n"
+       << "\t\"title\": " << "\"" << title << "\",\n"
        << "\"thumb\":" << "\n"
        << "{\n"
        << "\t\"file_id\":" << "\""<< thumb_file_id << "\", \n"
@@ -40,6 +44,8 @@ int main()
        << "\t\"height\": " << std::to_string(thumb_height) << "\n"
        << "}\n"
        << "}";
-    
-    std::cout << ss.str() <<std::endl;
+    std::string json = ss.str();
+    bot::types::Audio audio(json);
+}
+
 }

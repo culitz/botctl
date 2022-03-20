@@ -37,7 +37,7 @@ void User::fromNestedObject(Value &value)
     supports_inline_queries = getOptBool(value, SUPPORT_INLINE_QUERIES);
 }
 
-void User::fillObject(Document &document)
+void User::fillObject(rapidjson::Document &document)
 {
     Parent::fillObject(document);
     is_bot = document[IS_BOT.c_str()].GetBool();

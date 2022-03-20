@@ -45,7 +45,7 @@ void MessageEntity::fillDocument(Writer &writer) const
     }
 }
 
-void MessageEntity::fillObject(Document &document)
+void MessageEntity::fillObject(rapidjson::Document &document)
 {
     type = document[TYPE.c_str()].GetString();
     offset = document[OFFSET.c_str()].GetInt();

@@ -11,10 +11,14 @@ public:
     inline static const string FILE_ID = "file_id";
     inline static const string FILE_UNIQUE_ID = "file_unique_id";
     inline static const string FILE_SIZE = "file_size";
+    inline static const string FILE_NAME = "file_name";
+    inline static const string MIME_TYPE = "mime_type";
 
     string file_id;
     string file_unique_id;
     int file_size;
+    std::optional<string> file_name;
+    std::optional<string> mime_type;
 
     BaseFile(string json);
     BaseFile() {}
@@ -22,8 +26,7 @@ public:
 
 protected:
     virtual void fillDocument(Writer& writer) const;
-    virtual void fillObject(Document& document);
-
+    virtual void fillObject(rapidjson::Document& document);
 };
 
 }

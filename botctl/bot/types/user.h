@@ -34,7 +34,7 @@ public:
     virtual void fromNestedObject(Value &value);
 private:
     typedef BaseObject Parent;
-    virtual void fillObject(Document& document);
+    virtual void fillObject(rapidjson::Document& document);
     virtual void fillDocument(Writer& writer) const;
 };
 

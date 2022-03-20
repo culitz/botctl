@@ -11,12 +11,12 @@
 #include "rapidjson/writer.h"
 
 
+
 namespace bot::types {
 
 typedef std::string string;
 typedef rapidjson::StringBuffer StringBuffer;
 typedef rapidjson::Writer<StringBuffer> Writer;
-typedef rapidjson::Document Document;
 typedef rapidjson::Value Value;
 
 enum Types
@@ -65,9 +65,9 @@ public:
      */
     virtual std::string toString() const;
     virtual size_t hash() const;
-    std::optional<string> getOptString(Document& document, string key);
-    std::optional<bool> getOptBool(Document& document, string key);
-    std::optional<int> getOptInt(Document& document, string key);
+    std::optional<string> getOptString(rapidjson::Document& document, string key);
+    std::optional<bool> getOptBool(rapidjson::Document& document, string key);
+    std::optional<int> getOptInt(rapidjson::Document& document, string key);
 
     std::optional<string> getOptString(Value& value, string key);
     std::optional<bool> getOptBool(Value& value, string key);
@@ -78,7 +78,7 @@ public:
 protected:
     rapidjson::Document document;
     virtual void fillDocument(Writer& writer) const;
-    virtual void fillObject(Document& document);
+    virtual void fillObject(rapidjson::Document& document);
 
 private:
     operator int() const { return -1; }

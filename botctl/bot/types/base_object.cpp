@@ -22,7 +22,7 @@ void BaseObject::fillDocument(Writer& writer) const
     writer.Int(id);
 }
 
-void BaseObject::fillObject(Document &document)
+void BaseObject::fillObject(rapidjson::Document &document)
 {
     id = document[ID_NAME.c_str()].GetInt();
 }
@@ -43,7 +43,7 @@ size_t BaseObject::hash() const
     return hash;
 }
 
-std::optional<string> BaseObject::getOptString(Document &document, string key)
+std::optional<string> BaseObject::getOptString(rapidjson::Document &document, string key)
 {
     if(document.HasMember(key.c_str()))
     {
@@ -53,7 +53,7 @@ std::optional<string> BaseObject::getOptString(Document &document, string key)
     return std::optional<string>();
 }
 
-std::optional<bool> BaseObject::getOptBool(Document &document, string key)
+std::optional<bool> BaseObject::getOptBool(rapidjson::Document &document, string key)
 {
     if(document.HasMember(key.c_str()))
     {
@@ -63,7 +63,7 @@ std::optional<bool> BaseObject::getOptBool(Document &document, string key)
     return std::optional<bool>();
 }
 
-std::optional<int> BaseObject::getOptInt(Document &document, string key)
+std::optional<int> BaseObject::getOptInt(rapidjson::Document &document, string key)
 {
     if(document.HasMember(key.c_str()))
     {
@@ -117,8 +117,9 @@ void BaseObject::fromNestedObject(Value &value)
 
 void BaseObject::fromString(const string& object)
 {
-    auto document = std::shared_ptr<Document>(new Document);
+    auto document = std::shared_ptr<rapidjson::Document>(new rapidjson::Document);
     document->Parse(object.c_str());
+    bool erros = document->HasParseError();
     fillObject(*document);
 }
 

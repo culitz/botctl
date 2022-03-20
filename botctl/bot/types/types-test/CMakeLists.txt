@@ -23,6 +23,9 @@ add_executable(
     "message_id_type_test.cpp"
     "message_entity_type_test.cpp"
     "photo_size_test.cpp"
+    "animation_test.cpp"
+    "audio_type_test.cpp"
+    "document_type_test.cpp"
 
     "../base_object.cpp"
     "../base_file.cpp"
@@ -32,6 +35,9 @@ add_executable(
     "../message_id.cpp"
     "../message_entity.cpp"
     "../photo_size.cpp"
+    "../animation.cpp"
+    "../audio.cpp"
+    "../document.cpp"
 )
 
 target_link_libraries(types_test GTest::GTest GTest::Main)

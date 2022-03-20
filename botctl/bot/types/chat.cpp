@@ -9,12 +9,12 @@ Chat::Chat() : BaseObject()
 
 Chat::Chat(string& json) : BaseObject()
 {
-    auto d = std::shared_ptr<Document>(new Document);
+    auto d = std::shared_ptr<rapidjson::Document>(new rapidjson::Document);
     d->Parse(json.c_str());
     fillObject(*d);
 }
 
-void Chat::fillObject(Document &document)
+void Chat::fillObject(rapidjson::Document &document)
 {
     Parent::fillObject(document);
     type = document[TYPE.c_str()].GetString();

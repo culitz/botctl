@@ -19,7 +19,7 @@ void MessageId::fillDocument(Writer& writer) const
     writer.Int(message_id);
 }
 
-void MessageId::fillObject(Document& document)
+void MessageId::fillObject(rapidjson::Document& document)
 {
     message_id = document[MESSAGE_ID.c_str()].GetInt();
 }

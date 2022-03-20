@@ -19,7 +19,7 @@ public:
     int message_id;
 protected:
     virtual void fillDocument(Writer& writer) const;
-    virtual void fillObject(Document& document);
+    virtual void fillObject(rapidjson::Document& document);
 };
 
 

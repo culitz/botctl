@@ -35,6 +35,9 @@ add_executable(
     "botctl/bot/types/message_id.cpp"
     "botctl/bot/types/message_entity.cpp"
     "botctl/bot/types/photo_size.cpp"
+    "botctl/bot/types/animation.cpp"
+    "botctl/bot/types/audio.cpp"
+    "botctl/bot/types/document.cpp"
 )
 target_link_libraries(cbot gflags pthread ${SRC_CC})
 add_dependencies(cbot rapidjson)

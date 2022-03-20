@@ -21,11 +21,18 @@ void BaseFile::fillDocument(Writer &writer) const
     writer.Int(file_size);
 }
 
-void BaseFile::fillObject(Document &document)
+void BaseFile::fillObject(rapidjson::Document &document)
 {
     file_id = document[FILE_ID.c_str()].GetString();
     file_unique_id = document[FILE_UNIQUE_ID.c_str()].GetString();
     file_size = document[FILE_SIZE.c_str()].GetInt();
+
+    if(document.HasMember(FILE_NAME.c_str()))
+        file_name = document[FILE_NAME.c_str()].GetString();
+    
+    if(document.HasMember(MIME_TYPE.c_str()))
+        mime_type.emplace(document[MIME_TYPE.c_str()].GetString());
+    
 }
 
 

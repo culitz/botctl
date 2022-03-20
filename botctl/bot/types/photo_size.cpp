@@ -17,7 +17,7 @@ void PhotoSize::fillDocument(Writer &writer) const
     writer.Int(height);
 }
 
-void PhotoSize::fillObject(Document &document)
+void PhotoSize::fillObject(rapidjson::Document &document)
 {
     Parent::fillObject(document);
     width = document[WIDTH.c_str()].GetInt();

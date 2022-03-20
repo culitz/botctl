@@ -60,7 +60,7 @@ public:
 
 
 protected:
-    virtual void fillObject(Document& document);
+    virtual void fillObject(rapidjson::Document& document);
     virtual void fillDocument(Writer &writer) const;
 private:
     typedef BaseObject Parent;
