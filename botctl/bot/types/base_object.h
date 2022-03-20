@@ -6,14 +6,18 @@
 #include <type_traits>
 #include <algorithm>
 #include <any>
-#include <boost/property_tree/json_parser.hpp>
-#include <boost/property_tree/ptree.hpp>
+#include "rapidjson/document.h"
+#include "rapidjson/stringbuffer.h"
+#include "rapidjson/writer.h"
+
 
 namespace bot::types {
 
 typedef std::string string;
-typedef boost::property_tree::ptree ptree;
-typedef std::map<string, std::pair<string, int>> DataMap;
+typedef rapidjson::StringBuffer StringBuffer;
+typedef rapidjson::Writer<StringBuffer> Writer;
+typedef rapidjson::Document Document;
+typedef rapidjson::Value Value;
 
 enum Types
 {
@@ -37,142 +41,17 @@ enum Types
  *          int type
  */
 
-class BaseObject : DataMap
+class BaseObject
 {
-protected:
-    /// Filling always in construsctor
-    std::vector<string> mFields;
-
-    /// Filling DataMap from mFields
-    void init(ptree& pt);
-
-private:
-    typedef std::map<string, string> Parent;
-
-    operator int() const { return -1; }
-    operator std::string() { return toString(); }
-
-    /// Redefenition of operator << need for serialize BaseObject to json
-    friend std::ostream& operator<<(std::ostream& os, const BaseObject& b);
-    friend bool operator==(const BaseObject& left, const BaseObject& right);
-    friend bool operator!=(const BaseObject& left, const BaseObject& right);
-
-    /**
-    * @brief get
-    * Getting data by key from type-object
-    * @param key - keyword
-    * @param default_value - method return value if keyword not exist
-    * @return T
-    */
-    bool get(string key, string& value, string default_value) const;
-    bool get(string key, bool default_value) const;
-    int get(string key, int default_value) const;
-    double get(string key, double default_value) const;
-    string get(string key, string default_value) const;
-    BaseObject get(string key, BaseObject default_value ) const;
-    std::vector<BaseObject> get(string key, std::vector<BaseObject> default_value) const;
-
 public:
     inline static const std::string ID_NAME {"id"};
-    BaseObject() : DataMap() { mFields = {ID_NAME}; }
+    BaseObject(){}
+    BaseObject(const BaseObject&);
     BaseObject(int id);
-    BaseObject( ptree& );
+    BaseObject(Value& value);
     ~BaseObject() {}
 
-    /**
-     * @brief add
-     * Add field to type-object
-     */
-    template <typename T>
-    void add(string key, T item)
-    {
-        std::stringstream ss;
-
-        /// fill metadata to value
-        int type;
-        if(std::is_same<string, T>::value)
-        {
-            type = Types::STRING;
-            ss << item;
-        }
-        else if( std::is_same<int, T>::value)
-        {
-            type = Types::INTEGER;
-            ss << item;
-        }
-        else if( std::is_same<float, T>::value)
-        {
-            type = Types::FLOAT;
-            ss << item;
-        }
-        else if( std::is_same<bool, T>::value)
-        {
-            type = Types::BOOL;
-            ss << item;
-            string serialized_value = ss.str();
-            string json_value = (serialized_value == "1") ? "true": "false";
-            ss.str(string{});
-            ss << json_value;
-        }
-        else
-        {
-            type = Types::OBJECT;
-            ss << item;
-        }
-
-        /// {value, metadata}
-        std::pair<string, int> data = {ss.str(), type};
-        insert(std::make_pair(key, data));
-    }
-
-    template<typename T>
-    std::optional<T> get(string const key) const
-    {
-        T tmp;
-        std::optional<T> opt = get(key, tmp);
-        return opt;
-    }
-
-    template<typename T>
-    T get(string const key, T default_value) const
-    {
-        return get(key, default_value);
-    }
-
-    template<typename T>
-    void fillItem(ptree& pt, string key, std::optional<T> opt_value) const
-    {
-        if(opt_value.has_value())
-            pt.add<T>(key, opt_value.value());
-    }
-
-    void fillObject(ptree& pt, string key, std::optional<BaseObject> opt_value) const
-    {
-        if(opt_value.has_value())
-            pt.add_child(key, *opt_value.value().getPtree());
-    }
-    /**
-     * @brief getId - getter for id field
-     * @return
-     */
-    int getId() const;
-
-    /**
-     * @brief setId - setter for id field
-     * @param value of field "id"
-     */
-    void setId(int value);
-
-    /**
-     * @brief getPtree - Get data of type-object as std::shared_ptr<boost::ptree>
-     * @return std::shared_ptr<boost::ptree>
-     */
-    virtual std::shared_ptr<ptree> getPtree() const;
-
-    /**
-     * @brief fromPtree - fill type-object from ptree
-     */
-    virtual void fromPtree(const ptree&);
+     int id;
 
     /**
      * @brief fromString - fille type-object from json string
@@ -185,8 +64,32 @@ public:
      * @return
      */
     virtual std::string toString() const;
-
     virtual size_t hash() const;
+    std::optional<string> getOptString(Document& document, string key);
+    std::optional<bool> getOptBool(Document& document, string key);
+    std::optional<int> getOptInt(Document& document, string key);
+
+    std::optional<string> getOptString(Value& value, string key);
+    std::optional<bool> getOptBool(Value& value, string key);
+    std::optional<int> getOptInt(Value& value, string key);
+
+    void asNestedObject(Writer& writer) const;
+    virtual void fromNestedObject(Value& value);
+protected:
+    rapidjson::Document document;
+    virtual void fillDocument(Writer& writer) const;
+    virtual void fillObject(Document& document);
+
+private:
+    typedef std::map<string, string> Parent;
+
+    operator int() const { return -1; }
+    operator std::string() { return toString(); }
+
+    /// Redefenition of operator << need for serialize BaseObject to json
+    friend std::ostream& operator<<(std::ostream& os, const BaseObject& b);
+    friend bool operator==(const BaseObject& left, const BaseObject& right);
+    friend bool operator!=(const BaseObject& left, const BaseObject& right);
 };
 
 inline std::ostream& operator<<(std::ostream& os, const BaseObject& b)

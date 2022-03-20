@@ -1,40 +1,22 @@
 #include "user.h"
 
-
 namespace bot::types {
 
-User::User(ptree& pt) : BaseObject(pt)
-{
-    mFields = {
-        IS_BOT,
-        FIRST_NAME,
-        LAST_NAME,
-        USERNAME,
-        LANGUAGE_CODE,
-        CAN_JOIN_GROUPS,
-        CAN_READ_ALL_GROUP_MESSAGES,
-        SUPPORT_INLINE_QUERIES
-    };
-
-    for(string& field: mFields)
-    {
-        string value = pt.get<string>(field);
-        add<string>(field, value);
-    }
-}
 
 User::User()
 {
-    mFields = {
-        IS_BOT,
-        FIRST_NAME,
-        LAST_NAME,
-        USERNAME,
-        LANGUAGE_CODE,
-        CAN_JOIN_GROUPS,
-        CAN_READ_ALL_GROUP_MESSAGES,
-        SUPPORT_INLINE_QUERIES
-    };
+
+}
+
+User::User(string& json) : BaseObject()
+{
+    fromString(json);
+}
+
+User::User(const User &user) : BaseObject(user)
+{
+    is_bot = user.is_bot;
+    first_name = user.first_name;
 }
 
 User::~User()
@@ -42,44 +24,63 @@ User::~User()
 
 }
 
-bool User::isBot()
+void User::fromNestedObject(Value &value)
 {
-    return get<bool>(User::IS_BOT, false);
+    Parent::fromNestedObject(value);
+    is_bot = value[IS_BOT.c_str()].GetBool();
+    first_name = value[FIRST_NAME.c_str()].GetString();
+    last_name = getOptString(value, LAST_NAME);
+    username = getOptString(value, USERNAME);
+    language_code = getOptString(value, LANGUAGE_CODE);
+    can_join_groups = getOptBool(value, CAN_JOIN_GROUPS);
+    can_read_all_group_messages = getOptBool(value, CAN_READ_ALL_GROUP_MESSAGES);
+    supports_inline_queries = getOptBool(value, SUPPORT_INLINE_QUERIES);
 }
 
-string User::getFirstName()
+void User::fillObject(Document &document)
 {
-    return get<string>(User::FIRST_NAME, string());
+    Parent::fillObject(document);
+    is_bot = document[IS_BOT.c_str()].GetBool();
+    first_name = document[FIRST_NAME.c_str()].GetString();
+    last_name = getOptString(document, LAST_NAME);
+    username = getOptString(document, USERNAME);
+    language_code = getOptString(document, LANGUAGE_CODE);
+    can_join_groups = getOptBool(document, CAN_JOIN_GROUPS);
+    can_read_all_group_messages = getOptBool(document, CAN_READ_ALL_GROUP_MESSAGES);
+    supports_inline_queries = getOptBool(document, SUPPORT_INLINE_QUERIES);
 }
 
-std::optional<string> User::getLastName()
+void User::fillDocument(Writer &writer) const
 {
-    return get<string>(User::LAST_NAME);
+    Parent::fillDocument(writer);
+    writer.Key(IS_BOT.c_str());
+    writer.Bool(is_bot);
+
+    writer.Key(FIRST_NAME.c_str());
+    writer.String(first_name.c_str());
+
+    if(last_name)
+    {
+        writer.Key(LAST_NAME.c_str());
+        writer.String(last_name->c_str());
+    }
+    if(username)
+    {
+        writer.Key(USERNAME.c_str());
+        writer.String(username->c_str());
+    }
+    if(language_code)
+    {
+        writer.Key(LANGUAGE_CODE.c_str());
+        writer.String(language_code->c_str());
+    }
+    if(can_join_groups)
+    {
+        writer.Key(CAN_JOIN_GROUPS.c_str());
+        writer.Bool(*can_join_groups);
+    }
 }
 
-std::optional<string> User::getUserName()
-{
-    return get<string>(User::USERNAME);
-}
 
-std::optional<string> User::getLanguageCode()
-{
-    return get<string>(User::LANGUAGE_CODE);
-}
-
-bool User::canJoinGroups()
-{
-    return get<bool>(User::CAN_JOIN_GROUPS, false);
-}
-
-bool User::canReadAllGroupMessages()
-{
-    return get<bool>(User::CAN_READ_ALL_GROUP_MESSAGES, false);
-}
-
-bool User::supportInlineQueries()
-{
-    return get<bool>(User::SUPPORT_INLINE_QUERIES, false);
-}
 
 }

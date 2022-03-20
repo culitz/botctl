@@ -8,19 +8,25 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 enable_testing()
 
 find_package(Threads REQUIRED)
-find_package(Boost COMPONENTS system REQUIRED)
 find_package(GTest REQUIRED)
 
-
-include_directories(${GTEST_INCLUDE_DIRS})
+include_directories(
+    ${GTEST_INCLUDE_DIRS}
+)
 add_executable(
     types_test
     "base_type_test.cpp"
     "chat_type_test.cpp"
     "user_type_test.cpp"
+    "message_type_test.cpp"
+    "message_id_type_test.cpp"
+    "message_entity_type_test.cpp"
     "../base_object.cpp"
     "../chat.cpp"
     "../user.cpp"
+    "../message.cpp"
+    "../message_id.cpp"
+    "../message_entity.cpp"
 )
 
 target_link_libraries(types_test GTest::GTest GTest::Main)

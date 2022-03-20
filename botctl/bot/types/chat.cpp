@@ -4,230 +4,116 @@ namespace bot::types {
 
 Chat::Chat() : BaseObject()
 {
-    mFields = {
-        TYPE,
-        TITLE,
-        USERNAME,
-        FIRSTNAME,
-        LASTNAME,
-        PHOTO,
-        BIO,
-        DESCRIPTION,
-        INVITE_LINK,
-        PINNED_MESSAGE,
-        PERMISSIONS,
-        SLOW_MODE_DELAY,
-        MESSAGE_AUTO_DELETE_TIME,
-        STICKER_SET_NAME,
-        CAN_SET_STICKER_SET,
-        LINKED_CHAT_ID,
-        LOCATION
-    };
+
 }
 
-Chat::Chat(ptree& pt)
+Chat::Chat(string& json) : BaseObject()
 {
-    mFields = {
-        TYPE,
-        TITLE,
-        USERNAME,
-        FIRSTNAME,
-        LASTNAME,
-        PHOTO,
-        BIO,
-        DESCRIPTION,
-        INVITE_LINK,
-        PINNED_MESSAGE,
-        PERMISSIONS,
-        SLOW_MODE_DELAY,
-        MESSAGE_AUTO_DELETE_TIME,
-        STICKER_SET_NAME,
-        CAN_SET_STICKER_SET,
-        LINKED_CHAT_ID,
-        LOCATION
-    };
-
-    init(pt);
+    auto d = std::shared_ptr<Document>(new Document);
+    d->Parse(json.c_str());
+    fillObject(*d);
 }
 
-string Chat::getType() const
+void Chat::fillObject(Document &document)
 {
-    return get<string>(TYPE, string{});
+    Parent::fillObject(document);
+    type = document[TYPE.c_str()].GetString();
+    title = getOptString(document, TITLE);
+    username = getOptString(document, USERNAME);
+    first_name = getOptString(document, FIRSTNAME);
+    last_name = getOptString(document, LASTNAME);
+    // @todo change to getting and fill nested object
+    // photo = std::optional<BaseObject>{};
+    bio = getOptString(document, BIO);
+    has_private_forwards = getOptBool(document, HAS_PRIVATE_FORWARDS);
+    description = getOptString(document, DESCRIPTION);
+    invite_link = getOptString(document, INVITE_LINK);
+    // pinned_message = std::optional<BaseObject>();
+    // permissions = std::optional<BaseObject>();
+    slow_mode_delay = getOptInt(document, SLOW_MODE_DELAY);
+    message_auto_delete_time = getOptInt(document, MESSAGE_AUTO_DELETE_TIME);
+    has_protected_content = getOptBool(document, HAS_PROTRCTED_CONTENT);
+    sticker_set_name = getOptString(document, STICKER_SET_NAME);
+    can_set_sticker_set = getOptBool(document, CAN_SET_STICKER_SET);
+    linked_chat_id = getOptInt(document, LINKED_CHAT_ID);
+    // location = std::optional<BaseObject>();
 }
 
-void Chat::setType(const string& type)
+void Chat::fillDocument(Writer &writer) const
 {
-    add<string>(TYPE, type);
-}
-
-std::optional<string> Chat::getTitle() const
-{
-    return get<string>(TITLE, string());
-}
-
-void Chat::setTitle(const string title)
-{
-    add<string>(TYPE, title);
-}
-
-std::optional<string> Chat::getUsername() const
-{
-    return get<string>(USERNAME, string());
-}
-
-void Chat::setUsername(const string username)
-{
-    add<string>(USERNAME, username);
-}
-
-std::optional<string> Chat::getFirstName() const
-{
-    return get<string>(FIRSTNAME, string());
-}
-
-void Chat::setFirstName(const string firstName)
-{
-    add<string>(FIRSTNAME, firstName);
-}
-
-std::optional<string> Chat::getLastName() const
-{
-    return get<string>(LASTNAME, string());
-}
-
-void Chat::setLastName(const string value)
-{
-    add<string>(LASTNAME, value);
-}
-
-std::optional<BaseObject> Chat::getPhoto() const
-{
-    return get<BaseObject>(PHOTO, BaseObject{});
-}
-
-void Chat::setPhoto(const BaseObject& photo)
-{
-    add<BaseObject>(PHOTO, photo);
-}
-
-std::optional<string> Chat::getBio() const
-{
-    return get<string>(BIO, string());
-}
-
-void Chat::setBio(const string bio)
-{
-    add<string>(BIO, bio);
-}
-
-std::optional<string> Chat::getDescription() const
-{
-    return get<string>(DESCRIPTION, string());
-}
-
-void Chat::setDescription(const string description)
-{
-    add<string>(DESCRIPTION, description);
-}
-
-std::optional<string> Chat::getInviteLink() const
-{
-    return get<string>(INVITE_LINK, string());
-}
-
-void Chat::setInviteLink(const string inviteLink)
-{
-    add<string>(INVITE_LINK, inviteLink);
-}
-
-std::optional<BaseObject> Chat::getPinnedMessage() const
-{
-    return get<BaseObject>(PINNED_MESSAGE, BaseObject{});
-}
-
-void Chat::setPinnedMessage(const BaseObject& value)
-{
-    add<BaseObject>(PINNED_MESSAGE, value);
-}
-
-std::optional<BaseObject> Chat::getPermissions() const
-{
-    return get<BaseObject>(PERMISSIONS, BaseObject{});
-}
-
-void Chat::setPermissions(const BaseObject& permissions)
-{
-    add<BaseObject>(PERMISSIONS, permissions);
-}
-
-std::optional<int> Chat::getSlowModeDelay() const
-{
-    return get<int>(SLOW_MODE_DELAY, -1);
-}
-
-void Chat::setSlowModeDelay(const int slowModeDelay)
-{
-    add<int>(SLOW_MODE_DELAY, slowModeDelay);
-}
-
-std::optional<int> Chat::getMessageAutoDeleteTime() const
-{
-    return get<int>(MESSAGE_AUTO_DELETE_TIME, 0);
-}
-
-void Chat::setMessageAutoDeleteTime(const int messageAutoDeleteTime)
-{
-    add<int>(MESSAGE_AUTO_DELETE_TIME, messageAutoDeleteTime);
-}
-
-std::optional<string> Chat::getStickerSetName() const
-{
-    return get<string>(STICKER_SET_NAME, string());
-}
-
-void Chat::setStickerSetName(const string stickerSetName)
-{
-    add<string>(STICKER_SET_NAME, stickerSetName);
-}
-
-std::optional<bool> Chat::getCanSetStickerSet() const
-{
-    return get<bool>(CAN_SET_STICKER_SET, false);
-}
-
-void Chat::setCanSetStickerSet(const bool canSetStickerSet)
-{
-    add<bool>(CAN_SET_STICKER_SET, canSetStickerSet);
-}
-
-std::optional<int> Chat::getLinkedChatId() const
-{
-    return get<int>(LINKED_CHAT_ID);
-}
-
-void Chat::setLinkedChatId(const int linkedChatId)
-{
-    add<int>(LINKED_CHAT_ID, linkedChatId);
-}
-
-std::optional<BaseObject> Chat::getLocation() const
-{
-    return get<BaseObject>(LOCATION, BaseObject{});
-}
-
-void Chat::setLocation(const BaseObject& location)
-{
-    add<BaseObject>(LOCATION, location);
-}
-
-void Chat::fromPtree(const ptree& pt)
-{
-    for(string& field: mFields)
+    Parent::fillDocument(writer);
+    writer.Key(TYPE.c_str());
+    writer.String(type.c_str());
+    if(title)
     {
-        string value = pt.get<string>(field);
-        add<string>(field, value);
+        writer.Key(TITLE.c_str());
+        writer.String(title->c_str());
+    }
+    if(username)
+    {
+        writer.Key(USERNAME.c_str());
+        writer.String(username->c_str());
+    }
+    if(first_name)
+    {
+        writer.Key(FIRSTNAME.c_str());
+        writer.String(first_name->c_str());
+    }
+    if(last_name)
+    {
+        writer.Key(LASTNAME.c_str());
+        writer.String(last_name->c_str());
+    }
+    if(bio)
+    {
+        writer.Key(BIO.c_str());
+        writer.String(bio->c_str());
+    }
+    if(has_private_forwards)
+    {
+        writer.Key(HAS_PRIVATE_FORWARDS.c_str());
+        writer.Bool(*has_private_forwards);
+    }
+    if(description)
+    {
+        writer.Key(DESCRIPTION.c_str());
+        writer.String(description->c_str());
+    }
+    if(invite_link)
+    {
+        writer.Key(INVITE_LINK.c_str());
+        writer.String(invite_link->c_str());
+    }
+    if(slow_mode_delay)
+    {
+        writer.Key(SLOW_MODE_DELAY.c_str());
+        writer.Int(*slow_mode_delay);
+    }
+    if(message_auto_delete_time)
+    {
+        writer.Key(MESSAGE_AUTO_DELETE_TIME.c_str());
+        writer.Int(*message_auto_delete_time);
+    }
+    if(has_protected_content)
+    {
+        writer.Key(HAS_PROTRCTED_CONTENT.c_str());
+        writer.Bool(*has_protected_content);
+    }
+    if(sticker_set_name)
+    {
+        writer.Key(STICKER_SET_NAME.c_str());
+        writer.String(sticker_set_name->c_str());
+    }
+    if(can_set_sticker_set)
+    {
+        writer.Key(CAN_SET_STICKER_SET.c_str());
+        writer.Bool(*can_set_sticker_set);
+    }
+    if(linked_chat_id)
+    {
+        writer.Key(LINKED_CHAT_ID.c_str());
+        writer.Int(*linked_chat_id);
     }
 }
-
 
 }

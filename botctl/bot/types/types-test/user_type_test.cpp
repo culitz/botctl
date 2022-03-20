@@ -1,10 +1,14 @@
 #include <gtest/gtest.h>
-#include <boost/property_tree/ptree.hpp>
 #include "../user.h"
 #include "../base_object.h"
+#include "rapidjson/writer.h"
+#include "rapidjson/stringbuffer.h"
+
+
+namespace test_user_type {
+
 
 using User = bot::types::User;
-using ptree = boost::property_tree::ptree;
 using string = std::string;
 using optstring = std::optional<string>;
 using BaseObject = bot::types::BaseObject;
@@ -19,74 +23,57 @@ const bool TEST_CAN_JOIN_GROUPS = true;
 const bool TEST_CAN_READ_ALL_GROUP_MESSAGES = true;
 const bool TEST_SUPPORT_INLINE_QUERIES = true;
 
-std::shared_ptr<ptree> getDataset()
+string dataSet()
 {
-    auto pt = std::shared_ptr<ptree>( new ptree );
-    pt->add<int>(BaseObject::ID_NAME, TEST_ID);
-    pt->add<bool>(User::IS_BOT, TEST_IS_BOT);
-    pt->add<string>(User::USERNAME, TEST_USERNAME);
-    pt->add<string>(User::FIRST_NAME, TEST_FIRST_NAME);
-    pt->add<string>(User::LAST_NAME, TEST_LAST_NAME);
-    pt->add<string>(User::LANGUAGE_CODE, TEST_LANG_CODE);
-    pt->add<bool>(User::CAN_JOIN_GROUPS, TEST_CAN_JOIN_GROUPS);
-    pt->add<bool>(User::CAN_READ_ALL_GROUP_MESSAGES, TEST_CAN_READ_ALL_GROUP_MESSAGES);
-    pt->add<bool>(User::SUPPORT_INLINE_QUERIES, TEST_SUPPORT_INLINE_QUERIES);
-    return pt;
+    rapidjson::StringBuffer buffer;
+    rapidjson::Writer<rapidjson::StringBuffer> writer(buffer);
+
+    writer.StartObject();
+
+    writer.Key(User::ID_NAME.c_str());
+    writer.Int(TEST_ID);
+
+    writer.Key(User::IS_BOT.c_str());
+    writer.Bool(TEST_ID);
+
+    writer.Key(User::USERNAME.c_str());
+    writer.String(TEST_USERNAME);
+
+    writer.Key(User::FIRST_NAME.c_str());
+    writer.String(TEST_FIRST_NAME);
+
+    writer.Key(User::LAST_NAME.c_str());
+    writer.String(TEST_LAST_NAME);
+
+    writer.Key(User::LANGUAGE_CODE.c_str());
+    writer.String(TEST_LANG_CODE);
+
+    writer.Key(User::CAN_JOIN_GROUPS.c_str());
+    writer.Bool(TEST_CAN_JOIN_GROUPS);
+
+    writer.Key(User::CAN_READ_ALL_GROUP_MESSAGES.c_str());
+    writer.Bool(TEST_CAN_READ_ALL_GROUP_MESSAGES);
+
+    writer.Key(User::SUPPORT_INLINE_QUERIES.c_str());
+    writer.Bool(TEST_SUPPORT_INLINE_QUERIES);
+
+    writer.EndObject();
+    return buffer.GetString();
 }
 
-std::shared_ptr<User> createObject()
+TEST(type_user, initialize_from_string)
 {
-    auto data = getDataset();
-    return std::shared_ptr<User>( new User(*data) );
+    string json = dataSet();
+    User user(json);
+    ASSERT_EQ(user.id, TEST_ID);
+    ASSERT_EQ(user.is_bot, TEST_IS_BOT);
+    ASSERT_EQ(user.username, TEST_USERNAME);
+    ASSERT_EQ(user.first_name, TEST_FIRST_NAME);
+    ASSERT_EQ(user.last_name, TEST_LAST_NAME);
+    ASSERT_EQ(user.language_code, TEST_LANG_CODE);
+    ASSERT_EQ(user.can_join_groups, TEST_CAN_JOIN_GROUPS);
+    ASSERT_EQ(user.can_read_all_group_messages, TEST_CAN_READ_ALL_GROUP_MESSAGES);
+    ASSERT_EQ(user.supports_inline_queries, TEST_SUPPORT_INLINE_QUERIES);
 }
 
-TEST(type_user, initialize)
-{
-    ASSERT_NE(createObject(), nullptr);
-}
-
-TEST(type_user, get_id)
-{
-    ASSERT_EQ(createObject()->getId(), TEST_ID);
-}
-
-TEST(type_user, get_username)
-{
-    string username = createObject()->getUserName().value();
-    ASSERT_EQ(username, TEST_USERNAME) << username << " != " << TEST_USERNAME ;
-}
-
-TEST(type_user, get_first_name)
-{
-    ASSERT_EQ(createObject()->getFirstName(), TEST_FIRST_NAME);
-}
-
-TEST(type_user, get_last_name)
-{
-    ASSERT_EQ(createObject()->getLastName().value(),
-              TEST_LAST_NAME);
-}
-
-TEST(type_user, get_lang_code)
-{
-    ASSERT_EQ(createObject()->getLanguageCode().value(),
-              TEST_LANG_CODE);
-}
-
-TEST(type_user, can_join_groups)
-{
-    ASSERT_EQ(createObject()->canJoinGroups(),
-              TEST_CAN_JOIN_GROUPS);
-}
-
-TEST(type_user, can_read_all_groups)
-{
-    ASSERT_EQ(createObject()->canReadAllGroupMessages(),
-              TEST_CAN_READ_ALL_GROUP_MESSAGES);
-}
-
-TEST(type_user, upport_inline_queries)
-{
-    ASSERT_EQ(createObject()->supportInlineQueries(),
-              TEST_SUPPORT_INLINE_QUERIES);
 }

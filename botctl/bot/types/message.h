@@ -1,5 +1,6 @@
 #pragma once
 #include "base_object.h"
+#include <list>
 
 namespace bot::types
 {
@@ -9,6 +10,7 @@ class Message : public BaseObject
 public:
     inline static const string MESSAGE_ID               {"message_id"};
     inline static const string FROM                     {"from"};
+    inline static const string SENDER_CHAT              {"sender_chat"};
     inline static const string DATE                     {"date"};
     inline static const string CHAT                     {"chat"};
     inline static const string FORWARD_FROM             {"forward_from"};
@@ -38,72 +40,81 @@ public:
     inline static const string MIGRATE_FROM_CHAT_ID     {"migrate_from_chat_id"};
     inline static const string PINNED_MESSAGE           {"pinned_message"};
 
-    Message( int id );
-    Message( ptree& );
+    inline static const string FORWARD_FROM_MESSAGE_ID = "forward_from_message_id";
+    inline static const string FORWARD_SIGNATURE = "forward_signature";
+    inline static const string FORWARD_SENDER_NAME = "forward_sender_name";
+    inline static const string IS_AUTOMATIC_FORWARD = "is_automatic_forward";
+    inline static const string EDIT_DATE = "edit_date";
+    inline static const string HAS_PROTECTED_CONTENT = "has_protected_content";
+    inline static const string MEDIA_GROUP_ID = "media_group_id";
+    inline static const string AUTHOR_SIGNATURE = "author_signature";
+    inline static const string CONNECTED_WEBSITE = "connected_website";
 
-    /// getters
-    void setMessageId(string& message_id);
-    void setFrom(BaseObject& user);
-    void setDate(int date);
-    void setChat(BaseObject& chat);
-    void setForwardFrom(BaseObject& user);
-    void setForwardDate(int date);
-    void setReplyToMessage(BaseObject& message);
-    void setText(string& message);
-    void setEntities(std::vector<BaseObject>& entities);
-    void setAudio(BaseObject& audio);
-    void setDocument(BaseObject& documents);
-    void setPhoto(std::vector<BaseObject>& photos);
-    void setSticker(BaseObject& sticker);
-    void setVideo(BaseObject& video);
-    void setVoice(BaseObject& voice);
-    void setCaption(string caption);
-    void setContact(BaseObject& contact);
-    void setLocation(BaseObject& location);
-    void setVenue(BaseObject& venue);
-    void setNewChatMember(BaseObject& chat_member);
-    void setLeftChatMember(BaseObject &chat_member);
-    void setNewChatTitle(string title);
-    void setNewChatPhoto(std::vector<BaseObject>& chat_photo);
-    void setDeleteChatPhoto(bool status);
-    void setGroupChatCreated(bool status);
-    void setSupergroupChatCreated(bool status);
-    void setChannelChatCreated(bool status);
-    void setMigrateToChatId(int id);
-    void setMigrateFromChatId(int id);
-    void setPinnedMessage(BaseObject& message);
 
-    /// Setters
-    int                         getMessageId();
-    std::optional<BaseObject>   getFrom();
-    int                         getDate();
-    BaseObject                  getChat();
-    BaseObject                  getForwardFrom();
-    std::optional<int>          getForwardDate();
-    BaseObject                  getReplyToMessage();
-    std::optional<string>       getText();
-    std::vector<BaseObject>     getEntities();
-    std::optional<BaseObject>   getAudio();
-    std::optional<BaseObject>   getDocument();
-    std::vector<BaseObject>     getPhoto();
-    std::optional<BaseObject>   getSticker();
-    std::optional<BaseObject>   getVideo();
-    std::optional<BaseObject>   getVoice();
-    std::optional<string>       getCaption();
-    std::optional<BaseObject>   getContact();
-    std::optional<BaseObject>   getLocation();
-    std::optional<BaseObject>   getVenue();
-    std::optional<BaseObject>   getNewChatMember();
-    std::optional<BaseObject>   getLeftChatMember();
-    std::optional<string>       getNewChatTitle();
-    std::vector<BaseObject>     getNewChatPhoto();
-    std::optional<bool>         getDeleteChatPhoto();
-    std::optional<bool>         getGroupChatCreated();
-    std::optional<bool>         getSupergroupChatCreated();
-    std::optional<bool>         getChannelChatCreated();
-    std::optional<int>          getMigrateToChatId();
-    std::optional<int>          getMigrateFromChatId();
-    std::optional<BaseObject>   getPinnedMessage();
+    int                                                 message_id;
+    std::optional<BaseObject>                           from;
+    std::optional<BaseObject>                           sender_chat;
+    std::optional<int>                                  date;
+    std::optional<BaseObject>                           chat;
+    std::optional<BaseObject>                           forward_from;
+    std::optional<BaseObject>                           forward_from_chat;
+    std::optional<int>                                  forward_from_message_id;
+    std::optional<string>                               forward_signature;
+    std::optional<string>                               forward_sender_name;
+    std::optional<int>                                  forward_date;
+    std::optional<bool>                                 is_automatic_forward;
+    std::optional<BaseObject>                           reply_to_message;
+    std::optional<BaseObject>                           via_bot;
+    std::optional<int>                                  edit_date;
+    std::optional<bool>                                 has_protected_content;
+    std::optional<string>                               media_group_id;
+    std::optional<string>                               author_signature;
+    std::optional<string>                               text;
+    std::optional<std::list<BaseObject>>                entities;
+    std::optional<BaseObject>                           animation;
+    std::optional<BaseObject>                           audio;
+    std::optional<BaseObject>                           document;
+    std::optional<std::list<BaseObject>>                photo;
+    std::optional<BaseObject>                           sticker;
+    std::optional<BaseObject>                           video;
+    std::optional<BaseObject>                           video_note;
+    std::optional<BaseObject>                           voice;
+    std::optional<string>                               caption;
+    std::optional<std::list<BaseObject>>                caption_entities;
+    std::optional<BaseObject>                           contact;
+    std::optional<BaseObject>                           dice;
+    std::optional<BaseObject>                           game;
+    std::optional<BaseObject>                           pool;
+    std::optional<BaseObject>                           venue;
+    std::optional<BaseObject>                           location;
+    std::optional<std::list<BaseObject>>                new_chat_members;
+    std::optional<BaseObject>                           left_chat_member;
+    std::optional<string>                               new_chat_title;
+    std::optional<std::list<BaseObject>>                new_chat_photo;
+    std::optional<bool>                                 delete_chat_photo;
+    std::optional<bool>                                 group_chat_created;
+    std::optional<bool>                                 supergroup_chat_created;
+    std::optional<bool>                                 channel_chat_created;
+    std::optional<BaseObject>                           message_auto_delete_timer_changed;
+    std::optional<int>                                  migrate_to_chat_id;
+    std::optional<BaseObject>                           pinned_message;
+    std::optional<BaseObject>                           invoice;
+    std::optional<BaseObject>                           successful_payment;
+    std::optional<string>                               connected_website;
+    std::optional<BaseObject>                           passport_data;
+    std::optional<BaseObject>                           proximity_alert_triggered;
+    std::optional<BaseObject>                           voice_chat_scheduled;
+    std::optional<BaseObject>                           voice_chat_started;
+    std::optional<BaseObject>                           voice_chat_ended;
+    std::optional<BaseObject>                           voice_chat_participants_invited;
+    std::optional<BaseObject>                           reply_markup;
+
+    Message(string& json);
+    ~Message();
+
+protected:
+    virtual void fillDocument(Writer& writer);
+    virtual void fillObject(Document& document);
 };
 
 }
