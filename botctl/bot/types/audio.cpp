@@ -13,7 +13,7 @@ void Audio::fillDocument(Writer& writer) const
     
 }
 
-void Audio::fillObject(rapidjson::Document& document)
+void Audio::fillObject(rapidjson::Value const& document)
 {
     duration = document[DURATION.c_str()].GetInt();
     if(document.HasMember(PERFORMER.c_str()))

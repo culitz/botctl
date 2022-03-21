@@ -8,13 +8,11 @@ User::User()
 
 }
 
-User::User(string& json) : BaseObject()
-{
+User::User(string& json) : BaseObject() {
     fromString(json);
 }
 
-User::User(const User &user) : BaseObject(user)
-{
+User::User(const User &user) : BaseObject(user) {
     is_bot = user.is_bot;
     first_name = user.first_name;
 }
@@ -24,8 +22,7 @@ User::~User()
 
 }
 
-void User::fromNestedObject(Value &value)
-{
+void User::fromNestedObject(Value &value) {
     Parent::fromNestedObject(value);
     is_bot = value[IS_BOT.c_str()].GetBool();
     first_name = value[FIRST_NAME.c_str()].GetString();
@@ -37,7 +34,7 @@ void User::fromNestedObject(Value &value)
     supports_inline_queries = getOptBool(value, SUPPORT_INLINE_QUERIES);
 }
 
-void User::fillObject(rapidjson::Document &document)
+void User::fillObject(rapidjson::Value const &document)
 {
     Parent::fillObject(document);
     is_bot = document[IS_BOT.c_str()].GetBool();

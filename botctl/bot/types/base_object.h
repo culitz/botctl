@@ -44,11 +44,21 @@ enum Types
 class BaseObject
 {
 public:
+    const char* FILE_ID = "file_id";
+    const char* FILE_UNIQUE_ID = "file_unique_id";
+    const char* FILE_SIZE = "file_size";
+    const char* FILE_NAME = "file_name";
+    const char* MIME_TYPE = "mime_type";
+    const char* WIDTH = "width";
+    const char* HEIGHT = "height";
+    const char* DURATION = "duration";
+    const char* THUMB = "thumb";
+
     inline static const std::string ID_NAME {"id"};
     BaseObject(){}
     BaseObject(const BaseObject&);
     BaseObject(int id);
-    BaseObject(Value& value);
+    BaseObject(Value const& value);
     ~BaseObject() {}
 
      int id;
@@ -65,20 +75,16 @@ public:
      */
     virtual std::string toString() const;
     virtual size_t hash() const;
-    std::optional<string> getOptString(rapidjson::Document& document, string key);
-    std::optional<bool> getOptBool(rapidjson::Document& document, string key);
-    std::optional<int> getOptInt(rapidjson::Document& document, string key);
-
-    std::optional<string> getOptString(Value& value, string key);
-    std::optional<bool> getOptBool(Value& value, string key);
-    std::optional<int> getOptInt(Value& value, string key);
+    std::optional<string> getOptString(rapidjson::Value const& document, string key);
+    std::optional<bool> getOptBool(rapidjson::Value const& document, string key);
+    std::optional<int> getOptInt(rapidjson::Value const& document, string key);
 
     void asNestedObject(Writer& writer) const;
-    virtual void fromNestedObject(Value& value);
+    virtual void fromNestedObject(Value const& value);
 protected:
     rapidjson::Document document;
     virtual void fillDocument(Writer& writer) const;
-    virtual void fillObject(rapidjson::Document& document);
+    virtual void fillObject(Value const& document);
 
 private:
     operator int() const { return -1; }

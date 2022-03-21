@@ -26,7 +26,7 @@ public:
     std::optional<bool>                                 supports_inline_queries;
 
     User();
-    User(Value& value) : BaseObject(value) {}
+    User(Value const& value) : BaseObject(value) {}
     User(string& json);
     User(const User&);
     ~User();
@@ -34,7 +34,7 @@ public:
     virtual void fromNestedObject(Value &value);
 private:
     typedef BaseObject Parent;
-    virtual void fillObject(rapidjson::Document& document);
+    virtual void fillObject(rapidjson::Value const& document);
     virtual void fillDocument(Writer& writer) const;
 };
 

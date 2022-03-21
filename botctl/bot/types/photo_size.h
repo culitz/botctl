@@ -15,12 +15,13 @@ public:
 
     PhotoSize() : BaseFile() {}
     PhotoSize(string&);
+    PhotoSize(Value const&);
     virtual ~PhotoSize() {}
 
 protected:
     virtual void fillDocument(Writer& writer) const;
-    virtual void fillObject(rapidjson::Document& document);
-
+    virtual void fillObject(rapidjson::Value const& document);
+    
 private:
     typedef BaseFile Parent;
 };

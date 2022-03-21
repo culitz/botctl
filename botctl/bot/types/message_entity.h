@@ -28,7 +28,7 @@ public:
 
 protected:
     virtual void fillDocument(Writer& writer) const;
-    virtual void fillObject(rapidjson::Document& document);
+    virtual void fillObject(rapidjson::Value const& document);
 };
 
 }

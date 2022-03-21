@@ -111,7 +111,7 @@ void Message::fillDocument(Writer &writer)
 
 }
 
-void Message::fillObject(rapidjson::Document &document)
+void Message::fillObject(rapidjson::Value const &document)
 {
     message_id = document[MESSAGE_ID.c_str()].GetInt();
     date = document[DATE.c_str()].GetInt();

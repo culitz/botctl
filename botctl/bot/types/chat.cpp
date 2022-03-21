@@ -7,22 +7,20 @@ Chat::Chat() : BaseObject()
 
 }
 
-Chat::Chat(string& json) : BaseObject()
-{
+Chat::Chat(string& json) : BaseObject() {
     auto d = std::shared_ptr<rapidjson::Document>(new rapidjson::Document);
     d->Parse(json.c_str());
     fillObject(*d);
 }
 
-void Chat::fillObject(rapidjson::Document &document)
-{
+void Chat::fillObject(rapidjson::Value const &document) {
     Parent::fillObject(document);
     type = document[TYPE.c_str()].GetString();
     title = getOptString(document, TITLE);
     username = getOptString(document, USERNAME);
     first_name = getOptString(document, FIRSTNAME);
     last_name = getOptString(document, LASTNAME);
-    // @todo change to getting and fill nested object
+    /// \todo change to getting and fill nested object
     // photo = std::optional<BaseObject>{};
     bio = getOptString(document, BIO);
     has_private_forwards = getOptBool(document, HAS_PRIVATE_FORWARDS);
@@ -39,8 +37,7 @@ void Chat::fillObject(rapidjson::Document &document)
     // location = std::optional<BaseObject>();
 }
 
-void Chat::fillDocument(Writer &writer) const
-{
+void Chat::fillDocument(Writer &writer) const {
     Parent::fillDocument(writer);
     writer.Key(TYPE.c_str());
     writer.String(type.c_str());

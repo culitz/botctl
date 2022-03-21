@@ -26,7 +26,9 @@ add_executable(
     "animation_test.cpp"
     "audio_type_test.cpp"
     "document_type_test.cpp"
+    "video_type_test.cpp"
 
+    "../fields.cpp"
     "../base_object.cpp"
     "../base_file.cpp"
     "../chat.cpp"
@@ -38,6 +40,7 @@ add_executable(
     "../animation.cpp"
     "../audio.cpp"
     "../document.cpp"
+    "../video.cpp"
 )
 
 target_link_libraries(types_test GTest::GTest GTest::Main)

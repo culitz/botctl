@@ -17,7 +17,7 @@ void Document::fillDocument(Writer& writer) const
     }
 }
 
-void Document::fillObject(rapidjson::Document& document)
+void Document::fillObject(rapidjson::Value const& document)
 {
     BaseFile::fillObject(document);
     if(document.HasMember(THUMB.c_str()))

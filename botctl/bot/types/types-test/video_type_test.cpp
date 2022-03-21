@@ -1,15 +1,15 @@
-#include <iostream>
-#include "botctl/bot/types/base_file.h"
-#include <sstream>
-#include "botctl/bot/types/video.h"
-#include "botctl/bot/types/fields.h"
-#include "botctl/bot/types/chat.h"
+#include <gtest/gtest.h>
+#include "../fields.h"
+#include "../video.h"
+#include "rapidjson/document.h"
 
+
+namespace test_base_file_type
+{
 
 using namespace bot::types;
 
-
-int main()
+TEST(type_video, from_string)
 {
     std::stringstream ss;
     std::string file_id = "fl";
@@ -26,8 +26,8 @@ int main()
     std::string thumb_file_id = "thumb_file_id";
     std::string thumb_file_unique_id = "thumb_file_unique_id";
 
-    ss << "{\n"
-       << "\"" << fields::FILE_ID << "\":" << "\""<< file_id << "\", \n"
+    ss << "{"
+       << "\"" << fields::FILE_ID << "\":" << "\""<< file_id << "\", "
        << "\"" << fields::FILE_UNIQUE_ID << "\":" << "\"" << file_unique_id << "\", \n"
        << "\"" << fields::FILE_SIZE << "\": " << std::to_string(file_size) <<", \n"
        << "\"" << fields::FILE_NAME << "\": " << "\"" << file_name << "\", \n"
@@ -46,6 +46,22 @@ int main()
        << "}";
 
     std::string json = ss.str();
-    std::cout << json << std::endl;
     bot::types::Video video(json);
+
+    ASSERT_EQ(video.file_id, file_id) << ss.str();
+    ASSERT_EQ(video.file_unique_id, file_unique_id) << ss.str();
+    ASSERT_EQ(video.file_size, file_size);
+    ASSERT_EQ(video.file_name, file_name);
+    ASSERT_EQ(video.mime_type, mime_type);
+    ASSERT_EQ(video.height, height);
+    ASSERT_EQ(video.width, width);
+    ASSERT_EQ(video.duration, duration);
+    ASSERT_EQ(video.thumb->file_id, thumb_file_id);
+    ASSERT_EQ(video.thumb->file_unique_id, thumb_file_unique_id);
+    ASSERT_EQ(video.thumb->width, thumb_width);
+    ASSERT_EQ(video.thumb->height, thumb_height);
+    ASSERT_EQ(video.thumb->file_size, thumb_size);
+}
+
+
 }

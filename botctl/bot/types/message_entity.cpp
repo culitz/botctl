@@ -45,7 +45,7 @@ void MessageEntity::fillDocument(Writer &writer) const
     }
 }
 
-void MessageEntity::fillObject(rapidjson::Document &document)
+void MessageEntity::fillObject(rapidjson::Value const& document)
 {
     type = document[TYPE.c_str()].GetString();
     offset = document[OFFSET.c_str()].GetInt();
@@ -56,7 +56,7 @@ void MessageEntity::fillObject(rapidjson::Document &document)
 
     if(document.HasMember(USER.c_str()))
     {
-        Value& nested_object = document[USER.c_str()];
+        const Value& nested_object = document[USER.c_str()];
         user.emplace(User(nested_object));
     }
 

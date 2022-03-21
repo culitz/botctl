@@ -21,7 +21,7 @@ void Animation::fillDocument(Writer& writer) const
         thumb->asNestedObject(writer);
 }
 
-void Animation::fillObject(rapidjson::Document& document)
+void Animation::fillObject(rapidjson::Value const& document)
 {
     BaseFile::fillObject(document);
     widght = document[WIDTH.c_str()].GetInt();

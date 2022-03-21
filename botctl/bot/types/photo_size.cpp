@@ -7,6 +7,10 @@ PhotoSize::PhotoSize(string &json) : BaseFile()
     fromString(json);
 }
 
+PhotoSize::PhotoSize(Value const& value) {
+    fillObject(value);
+}
+
 void PhotoSize::fillDocument(Writer &writer) const
 {
     Parent::fillDocument(writer);
@@ -17,11 +21,10 @@ void PhotoSize::fillDocument(Writer &writer) const
     writer.Int(height);
 }
 
-void PhotoSize::fillObject(rapidjson::Document &document)
-{
-    Parent::fillObject(document);
-    width = document[WIDTH.c_str()].GetInt();
-    height = document[HEIGHT.c_str()].GetInt();
+void PhotoSize::fillObject(rapidjson::Value const &value) {
+    BaseFile::fillObject(value);
+    width = value[WIDTH.c_str()].GetInt();
+    height = value[HEIGHT.c_str()].GetInt();
 }
 
 }

@@ -27,6 +27,7 @@ add_subdirectory("botctl/bot/types/types-test")
 add_executable(
     cbot
     main.cpp
+    "botctl/bot/types/fields.cpp"
     "botctl/bot/types/base_object.cpp"
     "botctl/bot/types/base_file.cpp"
     "botctl/bot/types/chat.cpp"
@@ -38,6 +39,7 @@ add_executable(
     "botctl/bot/types/animation.cpp"
     "botctl/bot/types/audio.cpp"
     "botctl/bot/types/document.cpp"
+    "botctl/bot/types/video.cpp"
 )
 target_link_libraries(cbot gflags pthread ${SRC_CC})
 add_dependencies(cbot rapidjson)
