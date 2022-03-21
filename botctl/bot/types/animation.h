@@ -2,6 +2,7 @@
 #include <optional>
 #include "base_file.h"
 #include "photo_size.h"
+#include "fields.h"
 
 
 namespace bot::types
@@ -10,12 +11,6 @@ namespace bot::types
 class Animation : public BaseFile
 {
 public:
-    inline static const string WIDTH = "width";
-    inline static const string HEIGHT = "height";
-    inline static const string DUARATION = "duration";
-    inline static const string THUMB = "thumb";
-
-
     int widght;
     int heght;
     int duaration;

@@ -27,6 +27,7 @@ add_executable(
     "audio_type_test.cpp"
     "document_type_test.cpp"
     "video_type_test.cpp"
+    "video_note_test.cpp"
 
     "../fields.cpp"
     "../base_object.cpp"

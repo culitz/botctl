@@ -3,32 +3,28 @@
 namespace bot::types
 {
 
-Animation::Animation(string& json) : BaseFile()
-{
+Animation::Animation(string& json) : BaseFile() {
     fromString(json);
 }
 
-void Animation::fillDocument(Writer& writer) const
-{
+void Animation::fillDocument(Writer& writer) const {
     BaseFile::fillDocument(writer);
-    writer.Key(WIDTH.c_str());
+    writer.Key(fields::WIDTH);
     writer.Int(widght);
-    writer.Key(HEIGHT.c_str());
+    writer.Key(fields::HEIGHT);
     writer.Int(heght);
-    writer.Key(DUARATION.c_str());
+    writer.Key(fields::DURATION);
     
     if(thumb)
         thumb->asNestedObject(writer);
 }
 
-void Animation::fillObject(rapidjson::Value const& document)
-{
+void Animation::fillObject(rapidjson::Value const& document) {
     BaseFile::fillObject(document);
-    widght = document[WIDTH.c_str()].GetInt();
-    heght = document[HEIGHT.c_str()].GetInt();
-    duaration = document[DUARATION.c_str()].GetInt();
-    if(thumb)
-    {
+    widght = document[fields::WIDTH].GetInt();
+    heght = document[fields::HEIGHT].GetInt();
+    duaration = document[fields::DURATION].GetInt();
+    if(thumb) {
         PhotoSize photo_size;
         photo_size.fromNestedObject(document);
         thumb.emplace(photo_size);
