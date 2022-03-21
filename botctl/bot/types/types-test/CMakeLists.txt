@@ -29,6 +29,7 @@ add_executable(
     "video_type_test.cpp"
     "video_note_test.cpp"
     "voice_type_test.cpp"
+    "contact_type_test.cpp"
 
     "../fields.cpp"
     "../base_object.cpp"
@@ -44,6 +45,7 @@ add_executable(
     "../document.cpp"
     "../video.cpp"
     "../voice.cpp"
+    "../contact.cpp"
 )
 
 target_link_libraries(types_test GTest::GTest GTest::Main)

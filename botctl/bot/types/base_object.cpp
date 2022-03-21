@@ -14,6 +14,10 @@ BaseObject::BaseObject(Value const& value) {
     fromNestedObject(value);
 }
 
+BaseObject::BaseObject(string& json) {
+    fromString(json);
+}
+
 void BaseObject::fillDocument(Writer& writer) const {
     writer.Key(ID_NAME.c_str());
     writer.Int(id);

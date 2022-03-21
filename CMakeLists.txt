@@ -42,6 +42,7 @@ add_executable(
     "botctl/bot/types/video.cpp"
     "botctl/bot/types/video_note.cpp"
     "botctl/bot/types/voice.cpp"
+    "botctl/bot/types/contact.cpp"
 )
 target_link_libraries(cbot gflags pthread ${SRC_CC})
 add_dependencies(cbot rapidjson)

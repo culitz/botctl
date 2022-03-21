@@ -28,4 +28,9 @@ namespace bot::types::fields {
     const char* LINKED_CHAT_ID = "linked_chat_id";
     const char* LOCATION = "location";
     const char* LENGTH = "length";
+    const char* PHONE_NUMBER = "phone_number";
+    const char* FIRST_NAME = "first_name";
+    const char* LAST_NAME = "last_name";
+    const char* USER_ID = "user_id";
+    const char* VCARD = "vcard";
 }

@@ -58,6 +58,7 @@ public:
     BaseObject(){}
     BaseObject(const BaseObject&);
     BaseObject(int id);
+    BaseObject(string&);
     BaseObject(Value const& value);
     ~BaseObject() {}
 

@@ -29,4 +29,10 @@ namespace bot::types::fields {
     extern const char* LINKED_CHAT_ID;
     extern const char* LOCATION;
     extern const char* LENGTH;
+    extern const char* PHONE_NUMBER;
+    extern const char* PHONE_NUMBER;
+    extern const char* FIRST_NAME;
+    extern const char* LAST_NAME;
+    extern const char* USER_ID;
+    extern const char* VCARD;
 }

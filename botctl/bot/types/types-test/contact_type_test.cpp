@@ -1,15 +1,13 @@
-#include <iostream>
-#include "botctl/bot/types/base_file.h"
 #include <sstream>
-#include "botctl/bot/types/video.h"
-#include "botctl/bot/types/fields.h"
-#include "botctl/bot/types/contact.h"
+#include <gtest/gtest.h>
+#include "../contact.h"
+#include "rapidjson/document.h"
 
 
-using namespace bot::types;
+namespace test_type_contact 
+{
 
-
-int main()
+TEST(type_contact, from_string)
 {
     int user_id = 123;
     std::string phone_number = "phone_number";
@@ -26,7 +24,13 @@ int main()
        << "\"vcard\": " << "\"" << vcard << "\" \n"
        << "}";
     std::string json = ss.str();
-    std::cout << json << std::endl;
     bot::types::Contact contact(json);
-       
+
+    ASSERT_EQ(contact.user_id, user_id);
+    ASSERT_EQ(contact.phone_number, phone_number);
+    ASSERT_EQ(contact.first_name, first_name);
+    ASSERT_EQ(contact.last_name, last_name);
+    ASSERT_EQ(contact.vcard, vcard);
+}
+
 }
