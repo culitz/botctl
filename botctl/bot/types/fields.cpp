@@ -1,0 +1,31 @@
+namespace bot::types::fields {
+    const char* FILE_ID = "file_id";
+    const char* FILE_UNIQUE_ID = "file_unique_id";
+    const char* FILE_SIZE = "file_size";
+    const char* FILE_NAME = "file_name";
+    const char* MIME_TYPE = "mime_type";
+    const char* WIDTH = "width";
+    const char* HEIGHT = "height";
+    const char* DURATION = "duration";
+    const char* THUMB = "thumb";
+    const char* TYPE = "type";
+    const char* TITLE = "title";
+    const char* USERNAME = "username";
+    const char* FIRSTNAME = "first_name";
+    const char* LASTNAME = "last_name";
+    const char* PHOTO = "photo";
+    const char* BIO = "bio";
+    const char* HAS_PRIVATE_FORWARDS = "has_private_forwards";
+    const char* DESCRIPTION = "description";
+    const char* INVITE_LINK = "invite_link";
+    const char* PINNED_MESSAGE = "pinned_message";
+    const char* PERMISSIONS = "permissions";
+    const char* SLOW_MODE_DELAY = "slow_mode_delay";
+    const char* MESSAGE_AUTO_DELETE_TIME = "message_auto_delete_time";
+    const char* HAS_PROTRCTED_CONTENT = "has_protected_content";
+    const char* STICKER_SET_NAME = "sticker_set_name";
+    const char* CAN_SET_STICKER_SET = "can_set_sticker_set";
+    const char* LINKED_CHAT_ID = "linked_chat_id";
+    const char* LOCATION = "location";
+    const char* LENGTH = "length";
+}
