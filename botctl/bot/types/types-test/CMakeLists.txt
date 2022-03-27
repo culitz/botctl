@@ -36,6 +36,7 @@ add_executable(
     "poll_type_test.cpp"
     "location_type_test.cpp"
     "venue_type_test.cpp"
+    "message_auto_delete_timer_changed.cpp"
 
     "../fields.cpp"
     "../base_object.cpp"
@@ -58,6 +59,7 @@ add_executable(
     "../poll.cpp"
     "../location.cpp"
     "../venue.cpp"
+    "../message_auto_delete_timer_changed.cpp"
     
 )
 

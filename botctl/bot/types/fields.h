@@ -69,4 +69,5 @@ namespace bot::types::fields {
     extern const char* TRAVELER;
     extern const char* WATCHER;
     extern const char* DISTANCE;
+    extern const char* MESSAGE_AUTO_DELETE_TIMER_CHANGED;
 }

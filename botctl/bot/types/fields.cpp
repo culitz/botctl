@@ -66,4 +66,5 @@ namespace bot::types::fields {
     const char* TRAVELER = "traveler";
     const char* WATCHER = "watcher";
     const char* DISTANCE = "distance";
+    const char* MESSAGE_AUTO_DELETE_TIMER_CHANGED = "message_auto_delete_time"; 
 }
