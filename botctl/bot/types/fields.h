@@ -1,3 +1,4 @@
+#pragma once
 
 namespace bot::types::fields {
     extern const char* FILE_ID;
@@ -35,4 +36,11 @@ namespace bot::types::fields {
     extern const char* LAST_NAME;
     extern const char* USER_ID;
     extern const char* VCARD;
+    extern const char* EMOJI;
+    extern const char* VALUE;
+    extern const char* TEXT;
+    extern const char* VOTER_COUNT;
+    extern const char* OPTION_IDS;
+    extern const char* POOL_ID;
+    extern const char* USER;
 }

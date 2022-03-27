@@ -33,4 +33,11 @@ namespace bot::types::fields {
     const char* LAST_NAME = "last_name";
     const char* USER_ID = "user_id";
     const char* VCARD = "vcard";
+    const char* EMOJI = "emoji";
+    const char* VALUE = "value";
+    const char* TEXT = "text";
+    const char* VOTER_COUNT = "voter_count";
+    const char* OPTION_IDS = "option_ids";
+    const char* POOL_ID = "poll_id";
+    const char* USER = "user";
 }

@@ -1,5 +1,5 @@
+#pragma once
 #include "base_file.h"
-#include "base_object.h"
 
 
 namespace bot::types {

@@ -30,12 +30,15 @@ add_executable(
     "video_note_test.cpp"
     "voice_type_test.cpp"
     "contact_type_test.cpp"
+    "dice_type_test.cpp"
+    "pool_options_type_test.cpp"
+    "pool_answer_type_test.cpp"
 
     "../fields.cpp"
     "../base_object.cpp"
     "../base_file.cpp"
     "../chat.cpp"
-    "../user.cpp"
+    # "../user.cpp"
     "../message.cpp"
     "../message_id.cpp"
     "../message_entity.cpp"
@@ -46,6 +49,9 @@ add_executable(
     "../video.cpp"
     "../voice.cpp"
     "../contact.cpp"
+    "../dice.cpp"
+    "../pool_options.cpp"
+    "../pool_answer.cpp"
 )
 
 target_link_libraries(types_test GTest::GTest GTest::Main)

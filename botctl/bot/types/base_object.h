@@ -76,9 +76,21 @@ public:
      */
     virtual std::string toString() const;
     virtual size_t hash() const;
-    std::optional<string> getOptString(rapidjson::Value const& document, string key);
-    std::optional<bool> getOptBool(rapidjson::Value const& document, string key);
-    std::optional<int> getOptInt(rapidjson::Value const& document, string key);
+    
+    std::optional<string> getOptString(
+        rapidjson::Value const& document, 
+        string key
+    );
+
+    std::optional<bool> getOptBool(
+        rapidjson::Value const& document, 
+        string key
+    );
+
+    std::optional<int> getOptInt(
+        rapidjson::Value const& document, 
+        string key
+    );
 
     void asNestedObject(Writer& writer) const;
     virtual void fromNestedObject(Value const& value);

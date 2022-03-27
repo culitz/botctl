@@ -41,7 +41,7 @@ public:
     inline static const string PINNED_MESSAGE           {"pinned_message"};
 
     inline static const string FORWARD_FROM_MESSAGE_ID = "forward_from_message_id";
-    inline static const string FORWARD_SIGNATURE = "forward_signature";
+    inline static const string FORWARD_SIGNATURE =       "forward_signature";
     inline static const string FORWARD_SENDER_NAME = "forward_sender_name";
     inline static const string IS_AUTOMATIC_FORWARD = "is_automatic_forward";
     inline static const string EDIT_DATE = "edit_date";

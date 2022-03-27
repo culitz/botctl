@@ -1,3 +1,4 @@
+#pragma once
 #include "base_file.h"
 #include "fields.h"
 

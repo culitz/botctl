@@ -1,3 +1,4 @@
+#pragma once
 #include "base_file.h"
 #include "photo_size.h"
 #include "fields.h"

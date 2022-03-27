@@ -3,10 +3,9 @@
 namespace bot::types {
 
 
-User::User()
-{
+User::User() : BaseObject() {}
 
-}
+User::User(Value const& value) : BaseObject(value) {}
 
 User::User(string& json) : BaseObject() {
     fromString(json);
@@ -15,14 +14,11 @@ User::User(string& json) : BaseObject() {
 User::User(const User &user) : BaseObject(user) {
     is_bot = user.is_bot;
     first_name = user.first_name;
-}
+} 
 
-User::~User()
-{
+User::~User() {}
 
-}
-
-void User::fromNestedObject(Value &value) {
+void User::fromNestedObject(const Value &value) {
     Parent::fromNestedObject(value);
     is_bot = value[IS_BOT.c_str()].GetBool();
     first_name = value[FIRST_NAME.c_str()].GetString();
@@ -34,8 +30,7 @@ void User::fromNestedObject(Value &value) {
     supports_inline_queries = getOptBool(value, SUPPORT_INLINE_QUERIES);
 }
 
-void User::fillObject(rapidjson::Value const &document)
-{
+void User::fillObject(rapidjson::Value const &document) {
     Parent::fillObject(document);
     is_bot = document[IS_BOT.c_str()].GetBool();
     first_name = document[FIRST_NAME.c_str()].GetString();
@@ -47,8 +42,7 @@ void User::fillObject(rapidjson::Value const &document)
     supports_inline_queries = getOptBool(document, SUPPORT_INLINE_QUERIES);
 }
 
-void User::fillDocument(Writer &writer) const
-{
+void User::fillDocument(Writer &writer) const {
     Parent::fillDocument(writer);
     writer.Key(IS_BOT.c_str());
     writer.Bool(is_bot);
@@ -56,25 +50,26 @@ void User::fillDocument(Writer &writer) const
     writer.Key(FIRST_NAME.c_str());
     writer.String(first_name.c_str());
 
-    if(last_name)
-    {
+    if(last_name){
         writer.Key(LAST_NAME.c_str());
         writer.String(last_name->c_str());
     }
-    if(username)
-    {
+    if(username) {
         writer.Key(USERNAME.c_str());
         writer.String(username->c_str());
     }
-    if(language_code)
-    {
+    if(language_code) {
         writer.Key(LANGUAGE_CODE.c_str());
         writer.String(language_code->c_str());
     }
-    if(can_join_groups)
-    {
+    if(can_join_groups) {
         writer.Key(CAN_JOIN_GROUPS.c_str());
         writer.Bool(*can_join_groups);
+    }
+
+    if(supports_inline_queries){
+        writer.Key(SUPPORT_INLINE_QUERIES.c_str());
+        writer.Bool(*supports_inline_queries);
     }
 }
 

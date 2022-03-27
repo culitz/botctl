@@ -1,18 +1,15 @@
+#include "../pool_answer.h"
+#include <gtest/gtest.h>
+#include "../fields.h"
+#include "../user.cpp"
 #include <sstream>
-#include <iostream>
-#include "botctl/bot/types/base_file.h"
-#include "botctl/bot/types/video.h"
-#include "botctl/bot/types/fields.h"
-#include "botctl/bot/types/contact.h"
-#include "botctl/bot/types/user.h"
-#include "botctl/bot/types/pool_answer.h"
 
+
+namespace test_type_pool_answer {
 
 using namespace bot::types;
 
-
-int main()
-{
+TEST(type_pool_answer, from_string) {
     std::string poll_id = "12";
     std::vector<int> option_ids {1,2,3};
     User user;
@@ -26,16 +23,23 @@ int main()
 
     std::stringstream ss;
     ss  << "{ \n"
-        << "\"" << fields::POOL_ID << "\": "
+        << "\"" << fields::POOL_ID  << "\": "
         << "\"" << poll_id << "\", \n"
         << "\"" << fields::OPTION_IDS << "\": ["
         << std::to_string(option_ids[0]) << ", "
         << std::to_string(option_ids[1]) << ", "
         << std::to_string(option_ids[2]) << "], \n"
-        << "\"" << fields::USER << "\"" << user.toString() << "\n"
+        << "\"" << fields::USER << "\":" << user.toString() << "\n"
         << "}";
     
     std::string json = ss.str();
-    std::cout << json << std::endl;
     bot::types::PoolAnswer pool_answer(json);
+    ASSERT_EQ(pool_answer.poll_id, poll_id);
+    ASSERT_EQ(pool_answer.user.last_name, user.last_name);
+    ASSERT_EQ(pool_answer.user.id, user.id);
+    ASSERT_EQ(pool_answer.user.first_name, user.first_name);
+    ASSERT_EQ(pool_answer.user.is_bot, user.is_bot);
+    ASSERT_EQ(pool_answer.user.supports_inline_queries, user.supports_inline_queries);
+} 
+
 }
