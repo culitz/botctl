@@ -37,6 +37,7 @@ add_executable(
     "location_type_test.cpp"
     "venue_type_test.cpp"
     "message_auto_delete_timer_changed.cpp"
+    "voice_chat_scheduled_type_test.cpp"
 
     "../fields.cpp"
     "../base_object.cpp"
@@ -60,6 +61,7 @@ add_executable(
     "../location.cpp"
     "../venue.cpp"
     "../message_auto_delete_timer_changed.cpp"
+    "../voice_chat_scheduled.cpp"
     
 )
 
