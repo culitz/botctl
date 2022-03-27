@@ -49,6 +49,7 @@ add_executable(
     "botctl/bot/types/poll.cpp"
     "botctl/bot/types/location.cpp"
     "botctl/bot/types/venue.cpp"
+    "botctl/bot/types/proximity_alert_triggered.cpp"
 )
 target_link_libraries(cbot gflags pthread ${SRC_CC})
 add_dependencies(cbot rapidjson)

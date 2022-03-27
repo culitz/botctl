@@ -79,5 +79,8 @@ void Location::fillObject(Value const& document) {
     }
 }
 
+void Location::fromNestedObject(Value const& value) {
+    fillObject(value);
+}
 
 }

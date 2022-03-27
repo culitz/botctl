@@ -1,3 +1,4 @@
+#pragma once
 #include "base_object.h"
 #include "fields.h"
 
@@ -32,9 +33,11 @@ public:
         std::optional<int> proximity_alert_radius = {}
     );
     virtual ~Location();
+
+    virtual void fromNestedObject(Value const& value) override;
 protected:
-    virtual void fillDocument(Writer& writer) const;
-    virtual void fillObject(Value const& document);
+    virtual void fillDocument(Writer& writer) const override;
+    virtual void fillObject(Value const& document) override;
 };
 
 }

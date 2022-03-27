@@ -66,4 +66,7 @@ namespace bot::types::fields {
     extern const char* FOURSQUARE_TYPE;
     extern const char* GOOGLE_PLACE_ID;
     extern const char* GOOGLE_PLACE_TYPE;
+    extern const char* TRAVELER;
+    extern const char* WATCHER;
+    extern const char* DISTANCE;
 }

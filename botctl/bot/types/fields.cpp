@@ -63,4 +63,7 @@ namespace bot::types::fields {
     const char* FOURSQUARE_TYPE = "foursquare_type";
     const char* GOOGLE_PLACE_ID = "google_place_id";	
     const char* GOOGLE_PLACE_TYPE = "google_place_type";
+    const char* TRAVELER = "traveler";
+    const char* WATCHER = "watcher";
+    const char* DISTANCE = "distance";
 }
