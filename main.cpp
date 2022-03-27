@@ -5,7 +5,7 @@
 #include "botctl/bot/types/fields.h"
 #include "botctl/bot/types/contact.h"
 #include "botctl/bot/types/user.h"
-#include "botctl/bot/types/pool_answer.h"
+#include "botctl/bot/types/poll_answer.h"
 
 
 using namespace bot::types;
@@ -37,5 +37,5 @@ int main()
     
     std::string json = ss.str();
     std::cout << json << std::endl;
-    bot::types::PoolAnswer pool_answer(json);
+    bot::types::PollAnswer pool_answer(json);
 }

@@ -1,4 +1,4 @@
-#include "pool_options.h"
+#include "poll_options.h"
 
 namespace bot::types {
 
@@ -6,6 +6,9 @@ PollOption::PollOption(string& json) : BaseObject() {
     fromString(json);
 }
 
+PollOption::PollOption(Value const& value) : BaseObject() {
+    fillObject(value);
+}
 
 void PollOption::fillDocument(Writer& writer) const {
     writer.Key(fields::TEXT);

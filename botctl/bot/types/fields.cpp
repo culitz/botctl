@@ -40,4 +40,16 @@ namespace bot::types::fields {
     const char* OPTION_IDS = "option_ids";
     const char* POOL_ID = "poll_id";
     const char* USER = "user";
+    const char* ID = "id";
+    const char* QUESTION = "question";
+    const char* OPTIONS = "options";
+    const char* TOTAL_VOITER_COUNT = "total_voter_count";
+    const char* IS_CLOSED = "is_closed";
+    const char* IS_ANONYMOUS = "is_anonymous";
+    const char* ALLOW_MULTIPLE_ANSWERS = "allows_multiple_answers";
+    const char* CORRECT_OPTION_ID = "correct_option_id";
+    const char* EXPLANATION = "explanation";
+    const char* EXPLANATION_ENTITIES = "explanation_entities";
+    const char* OPEN_PERIOD = "open_period";
+    const char* CLOSE_DATE = "close_date";
 }

@@ -1,4 +1,4 @@
-#include "../pool_answer.h"
+#include "../poll_answer.h"
 #include <gtest/gtest.h>
 #include "../fields.h"
 #include "../user.cpp"
@@ -33,7 +33,7 @@ TEST(type_pool_answer, from_string) {
         << "}";
     
     std::string json = ss.str();
-    bot::types::PoolAnswer pool_answer(json);
+    bot::types::PollAnswer pool_answer(json);
     ASSERT_EQ(pool_answer.poll_id, poll_id);
     ASSERT_EQ(pool_answer.user.last_name, user.last_name);
     ASSERT_EQ(pool_answer.user.id, user.id);

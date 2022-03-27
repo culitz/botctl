@@ -50,8 +50,8 @@ add_executable(
     "../voice.cpp"
     "../contact.cpp"
     "../dice.cpp"
-    "../pool_options.cpp"
-    "../pool_answer.cpp"
+    "../poll_options.cpp"
+    "../poll_answer.cpp"
 )
 
 target_link_libraries(types_test GTest::GTest GTest::Main)

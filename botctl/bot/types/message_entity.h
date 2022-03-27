@@ -22,6 +22,7 @@ public:
     std::optional<User> user;
     std::optional<string> language;
 
+    MessageEntity(const Value& value);
     MessageEntity(string& json);
     MessageEntity() {}
     ~MessageEntity();

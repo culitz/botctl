@@ -44,8 +44,9 @@ add_executable(
     "botctl/bot/types/voice.cpp"
     "botctl/bot/types/contact.cpp"
     "botctl/bot/types/dice.cpp"
-    "botctl/bot/types/pool_options.cpp"
-    "botctl/bot/types/pool_answer.cpp"
+    "botctl/bot/types/poll_options.cpp"
+    "botctl/bot/types/poll_answer.cpp"
+    "botctl/bot/types/poll.cpp"
 )
 target_link_libraries(cbot gflags pthread ${SRC_CC})
 add_dependencies(cbot rapidjson)

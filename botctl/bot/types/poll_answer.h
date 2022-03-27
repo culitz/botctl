@@ -8,15 +8,15 @@
 
 namespace bot::types {
 
-class PoolAnswer : public BaseObject {
+class PollAnswer : public BaseObject {
 public:
     string poll_id;
     User user;
     std::vector<int> option_ids;
-    PoolAnswer();
-    PoolAnswer(string&);
-    PoolAnswer(Value const&);
-    virtual ~PoolAnswer();
+    PollAnswer();
+    PollAnswer(string&);
+    PollAnswer(Value const&);
+    virtual ~PollAnswer();
 protected:
     virtual 
     void fillDocument(Writer& writer) const 

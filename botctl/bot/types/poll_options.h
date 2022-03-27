@@ -12,6 +12,7 @@ public:
     
     PollOption() : BaseObject() {}
     PollOption(string&);
+    PollOption(const Value&);
     virtual ~PollOption() {}
 
 protected:

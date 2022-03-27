@@ -4,19 +4,19 @@
 namespace bot::types
 {
 
+MessageEntity::MessageEntity(const Value& value) {
+    fillObject(value);
+}
 
-MessageEntity::MessageEntity(string &json)
-{
+MessageEntity::MessageEntity(string &json) {
     fromString(json);
 }
 
-MessageEntity::~MessageEntity()
-{
+MessageEntity::~MessageEntity() {
 
 }
 
-void MessageEntity::fillDocument(Writer &writer) const
-{
+void MessageEntity::fillDocument(Writer &writer) const {
     writer.Key(TYPE.c_str());
     writer.String(type.c_str());
 
@@ -26,27 +26,23 @@ void MessageEntity::fillDocument(Writer &writer) const
     writer.Key(LENGTH.c_str());
     writer.Int(length);
 
-    if(url)
-    {
+    if(url) {
         writer.Key(URL.c_str());
         writer.String(url->c_str());
     }
 
-    if(user)
-    {
+    if(user) {
         writer.Key(USER.c_str());
         user->asNestedObject(writer);
     }
 
-    if(language)
-    {
+    if(language) {
         writer.Key(LANGUAGE.c_str());
         writer.String(language->c_str());
     }
 }
 
-void MessageEntity::fillObject(rapidjson::Value const& document)
-{
+void MessageEntity::fillObject(rapidjson::Value const& document) {
     type = document[TYPE.c_str()].GetString();
     offset = document[OFFSET.c_str()].GetInt();
     length = document[LENGTH.c_str()].GetInt();

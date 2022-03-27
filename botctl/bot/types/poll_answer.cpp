@@ -1,19 +1,19 @@
-#include "pool_answer.h"
+#include "poll_answer.h"
 
 namespace bot::types {
 
-PoolAnswer::PoolAnswer() : BaseObject() {}
-PoolAnswer::~PoolAnswer() {}
+PollAnswer::PollAnswer() : BaseObject() {}
+PollAnswer::~PollAnswer() {}
 
-PoolAnswer::PoolAnswer(Value const& value) {
+PollAnswer::PollAnswer(Value const& value) {
     fillObject(value);
 }
 
-PoolAnswer::PoolAnswer(string& json) : BaseObject() {
+PollAnswer::PollAnswer(string& json) : BaseObject() {
     fromString(json);
 }
 
-void PoolAnswer::fillDocument(Writer& writer) const {
+void PollAnswer::fillDocument(Writer& writer) const {
     writer.Key(fields::POOL_ID);
     writer.String(poll_id.c_str());
 
@@ -27,7 +27,7 @@ void PoolAnswer::fillDocument(Writer& writer) const {
     writer.EndArray();
 }
 
-void PoolAnswer::fillObject(rapidjson::Value const& document) {
+void PollAnswer::fillObject(rapidjson::Value const& document) {
     poll_id = document[fields::POOL_ID].GetString();
     
     if(document.HasMember(fields::USER)) {

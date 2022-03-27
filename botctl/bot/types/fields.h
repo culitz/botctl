@@ -43,4 +43,16 @@ namespace bot::types::fields {
     extern const char* OPTION_IDS;
     extern const char* POOL_ID;
     extern const char* USER;
+    extern const char* ID;    
+    extern const char* QUESTION;
+    extern const char* OPTIONS;
+    extern const char* TOTAL_VOITER_COUNT;
+    extern const char* IS_CLOSED;
+    extern const char* IS_ANONYMOUS;
+    extern const char* ALLOW_MULTIPLE_ANSWERS;
+    extern const char* CORRECT_OPTION_ID;
+    extern const char* EXPLANATION;
+    extern const char* EXPLANATION_ENTITIES;
+    extern const char* OPEN_PERIOD;
+    extern const char* CLOSE_DATE;
 }
