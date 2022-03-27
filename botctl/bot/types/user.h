@@ -29,6 +29,16 @@ public:
     User(Value const& value);
     User(string& json);
     User(const User&);
+    User(
+        string first_name,
+        bool is_bot,
+        std::optional<string> last_name = {},
+        std::optional<string> username = {},
+        std::optional<string> language_code = {},
+        std::optional<bool> can_join_groups = {},
+        std::optional<bool> can_read_all_group_messages = {},
+        std::optional<bool> supports_inline_queries = {}
+    );
     virtual ~User();
 
     virtual void fromNestedObject(const Value &value) override;

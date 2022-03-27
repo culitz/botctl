@@ -12,6 +12,25 @@ MessageEntity::MessageEntity(string &json) {
     fromString(json);
 }
 
+MessageEntity::MessageEntity(
+    string type, 
+    int offset, 
+    int length,
+    std::optional<string> url,
+    std::optional<User> user,
+    std::optional<string> language
+):  
+    BaseObject(), 
+    type(type), 
+    offset(offset), 
+    length(length), 
+    url(url), 
+    user(user), 
+    language(language)
+{
+
+}
+
 MessageEntity::~MessageEntity() {
 
 }

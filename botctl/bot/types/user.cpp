@@ -14,7 +14,26 @@ User::User(string& json) : BaseObject() {
 User::User(const User &user) : BaseObject(user) {
     is_bot = user.is_bot;
     first_name = user.first_name;
-} 
+}
+
+User::User(
+    string first_name,
+    bool is_bot,
+    std::optional<string> last_name,
+    std::optional<string> username,
+    std::optional<string> language_code,
+    std::optional<bool> can_join_groups,
+    std::optional<bool> can_read_all_group_messages,
+    std::optional<bool> supports_inline_queries
+) : BaseObject(), 
+    first_name(first_name),
+    last_name(last_name),
+    username(username),
+    language_code(language_code),
+    can_join_groups(can_join_groups),
+    can_read_all_group_messages(can_join_groups),
+    supports_inline_queries(supports_inline_queries)
+{}
 
 User::~User() {}
 

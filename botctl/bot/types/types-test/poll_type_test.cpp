@@ -1,21 +1,20 @@
+#include <vector>
 #include <sstream>
-#include <iostream>
+#include "gtest/gtest.h"
 #include "rapidjson/writer.h"
 #include "rapidjson/stringbuffer.h"
-#include "botctl/bot/types/message_entity.h"
-#include "botctl/bot/types/video.h"
-#include "botctl/bot/types/fields.h"
-#include "botctl/bot/types/poll_options.h"
-#include "botctl/bot/types/user.h"
-#include "botctl/bot/types/poll.h"
+#include "../poll.h"
+#include "../message_entity.h"
+#include "../poll_options.h"
+#include "../user.h"
+#include "../fields.h"
 
+namespace test_type_poll {
 
 using namespace bot::types;
 
-
-int main()
-{
-      std::string id = "100";
+TEST(test_type_poll, fromString) {
+    std::string id = "100";
     std::string question = "q";
     std::vector<PollOption> options {
         PollOption("text1", 1),
@@ -30,9 +29,12 @@ int main()
     int correct_option_id = 55;
     string explanation = "1234567";
 
+    string username = "username";
+    bool is_bot = true;
+    string exp_text = "foo";
     std::vector<MessageEntity> explanation_entities {
-        MessageEntity("foo", 1, 2),
-        MessageEntity("bar", 4, 5, "url", User("user", true), "en")
+        MessageEntity(exp_text, 1, 2),
+        MessageEntity(exp_text, 4, 5, "url", User(username, is_bot), "en")
     };
 
     int open_period = 123;
@@ -92,6 +94,31 @@ int main()
     writer.EndObject();
 
     string json = buffer.GetString();
-    std::cout << json << std::endl;
-    bot::types::Poll poll(json);
+    Poll poll(json);
+
+    ASSERT_EQ(poll.id, id);
+    ASSERT_EQ(poll.question, question);
+    ASSERT_EQ(poll.total_voter_count, total_voter_count);
+    ASSERT_EQ(poll.is_closed, is_closed);
+    ASSERT_EQ(poll.is_anonymous, is_anonymous);
+    ASSERT_EQ(poll.type, type);
+    ASSERT_EQ(poll.allows_multiple_answers, allows_multiple_answers);
+    ASSERT_EQ(poll.correct_option_id, correct_option_id);
+    ASSERT_EQ(poll.explanation, explanation);
+    ASSERT_EQ(poll.open_period, open_period);
+    ASSERT_EQ(poll.close_date, close_date);
+    
+    for(size_t i = 0; i < poll.options.size(); i++) {
+        ASSERT_EQ(poll.options[i].text, options[i].text);
+        ASSERT_EQ(poll.options[i].voter_count, options[i].voter_count);
+    }
+
+    /// \todo need to add checking optional values
+    for(size_t i = 0; i < poll.explanation_entities->size(); i++) {
+        ASSERT_EQ((*poll.explanation_entities)[i].type, explanation_entities[i].type);
+        ASSERT_EQ((*poll.explanation_entities)[i].offset, explanation_entities[i].offset);
+        ASSERT_EQ((*poll.explanation_entities)[i].length, explanation_entities[i].length);
+    }
+}
+
 }

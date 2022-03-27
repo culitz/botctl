@@ -13,6 +13,7 @@ public:
     PollOption() : BaseObject() {}
     PollOption(string&);
     PollOption(const Value&);
+    PollOption(string text, int voter_count);
     virtual ~PollOption() {}
 
 protected:

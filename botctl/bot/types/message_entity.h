@@ -24,6 +24,14 @@ public:
 
     MessageEntity(const Value& value);
     MessageEntity(string& json);
+    MessageEntity(
+        string type, 
+        int offset, 
+        int length,
+        std::optional<string> url = std::nullopt,
+        std::optional<User> user = std::nullopt,
+        std::optional<string> language = std::nullopt
+    );
     MessageEntity() {}
     ~MessageEntity();
 

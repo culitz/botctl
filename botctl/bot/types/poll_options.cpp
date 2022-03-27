@@ -10,6 +10,11 @@ PollOption::PollOption(Value const& value) : BaseObject() {
     fillObject(value);
 }
 
+PollOption::PollOption(string text, int voter_count) : 
+    BaseObject(), 
+    text(text), 
+    voter_count(voter_count) {}
+
 void PollOption::fillDocument(Writer& writer) const {
     writer.Key(fields::TEXT);
     writer.String(text.c_str());
