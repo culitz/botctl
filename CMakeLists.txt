@@ -47,6 +47,8 @@ add_executable(
     "botctl/bot/types/poll_options.cpp"
     "botctl/bot/types/poll_answer.cpp"
     "botctl/bot/types/poll.cpp"
+    "botctl/bot/types/location.cpp"
+    "botctl/bot/types/venue.cpp"
 )
 target_link_libraries(cbot gflags pthread ${SRC_CC})
 add_dependencies(cbot rapidjson)

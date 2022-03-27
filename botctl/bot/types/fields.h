@@ -55,4 +55,15 @@ namespace bot::types::fields {
     extern const char* EXPLANATION_ENTITIES;
     extern const char* OPEN_PERIOD;
     extern const char* CLOSE_DATE;
+    extern const char* LONGITUDE;
+    extern const char* LATITUDE;
+    extern const char* HORIZONTAL_ACCURACY;
+    extern const char* LIVE_PERIOD;
+    extern const char* HEADING;
+    extern const char* PROXIMITY_ALERT_RADIUS;
+    extern const char* ADDRESS;
+    extern const char* FOURSQUARE_ID;
+    extern const char* FOURSQUARE_TYPE;
+    extern const char* GOOGLE_PLACE_ID;
+    extern const char* GOOGLE_PLACE_TYPE;
 }

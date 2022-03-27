@@ -34,6 +34,7 @@ add_executable(
     "pool_options_type_test.cpp"
     "pool_answer_type_test.cpp"
     "poll_type_test.cpp"
+    "location_type_test.cpp"
 
     "../fields.cpp"
     "../base_object.cpp"
@@ -54,7 +55,8 @@ add_executable(
     "../poll_options.cpp"
     "../poll_answer.cpp"
     "../poll.cpp"
-
+    "../location.cpp"
+    "../venue.cpp"
 )
 
 target_link_libraries(types_test GTest::GTest GTest::Main)

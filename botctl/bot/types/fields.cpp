@@ -52,4 +52,15 @@ namespace bot::types::fields {
     const char* EXPLANATION_ENTITIES = "explanation_entities";
     const char* OPEN_PERIOD = "open_period";
     const char* CLOSE_DATE = "close_date";
+    const char* LONGITUDE = "longitude";
+    const char* LATITUDE = "latitude";
+    const char* HORIZONTAL_ACCURACY = "horizontal_accuracy";
+    const char* LIVE_PERIOD = "live_period";
+    const char* HEADING = "heading";
+    const char* PROXIMITY_ALERT_RADIUS = "proximity_alert_radius";
+    const char* ADDRESS = "address";
+    const char* FOURSQUARE_ID = "foursquare_id";
+    const char* FOURSQUARE_TYPE = "foursquare_type";
+    const char* GOOGLE_PLACE_ID = "google_place_id";	
+    const char* GOOGLE_PLACE_TYPE = "google_place_type";
 }

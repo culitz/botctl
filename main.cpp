@@ -15,7 +15,7 @@ using namespace bot::types;
 
 int main()
 {
-      std::string id = "100";
+    std::string id = "100";
     std::string question = "q";
     std::vector<PollOption> options {
         PollOption("text1", 1),
