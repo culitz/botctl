@@ -5,7 +5,9 @@ namespace bot::types {
 
 User::User() : BaseObject() {}
 
-User::User(Value const& value) : BaseObject(value) {}
+User::User(Value const& value) : BaseObject() {
+    fillObject(value);
+}
 
 User::User(string& json) : BaseObject() {
     fromString(json);

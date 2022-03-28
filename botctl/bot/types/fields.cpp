@@ -68,4 +68,5 @@ namespace bot::types::fields {
     const char* DISTANCE = "distance";
     const char* MESSAGE_AUTO_DELETE_TIMER_CHANGED = "message_auto_delete_time"; 
     const char* START_DATE = "start_date";
+    const char* USERS = "users";
 }

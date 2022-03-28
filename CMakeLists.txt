@@ -52,6 +52,8 @@ add_executable(
     "botctl/bot/types/proximity_alert_triggered.cpp"
     "botctl/bot/types/message_auto_delete_timer_changed.cpp"
     "botctl/bot/types/voice_chat_scheduled.cpp"
+    "botctl/bot/types/voice_chat_ended.cpp"
+    "botctl/bot/types/voice_chat_participants_invited.cpp"
 )
 target_link_libraries(cbot gflags pthread ${SRC_CC})
 add_dependencies(cbot rapidjson)

@@ -71,4 +71,5 @@ namespace bot::types::fields {
     extern const char* DISTANCE;
     extern const char* MESSAGE_AUTO_DELETE_TIMER_CHANGED;
     extern const char* START_DATE;
+    extern const char* USERS;
 }

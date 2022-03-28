@@ -74,7 +74,8 @@ void BaseObject::asNestedObject(Writer &writer) const {
 }
 
 void BaseObject::fromNestedObject(Value const &value) {
-    id = value[ID_NAME.c_str()].GetInt();
+    if(value.HasMember(ID_NAME.c_str()))
+        id = value[ID_NAME.c_str()].GetInt();
 }
 
 void BaseObject::fromString(const string& object) {

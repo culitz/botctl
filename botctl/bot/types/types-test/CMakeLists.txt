@@ -38,6 +38,7 @@ add_executable(
     "venue_type_test.cpp"
     "message_auto_delete_timer_changed.cpp"
     "voice_chat_scheduled_type_test.cpp"
+    "voice_chat_participants_invited_type_test.cpp"
 
     "../fields.cpp"
     "../base_object.cpp"
@@ -62,7 +63,8 @@ add_executable(
     "../venue.cpp"
     "../message_auto_delete_timer_changed.cpp"
     "../voice_chat_scheduled.cpp"
-    
+    "../voice_chat_ended.cpp"
+    "../voice_chat_participants_invited.cpp"
 )
 
 target_link_libraries(types_test GTest::GTest GTest::Main)
