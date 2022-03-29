@@ -30,6 +30,6 @@ public:
 protected:
     virtual void fillDocument(Writer& writer) const;
     virtual void fillObject(Value const& document);
-}; 
+};
 
 }

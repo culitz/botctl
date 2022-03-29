@@ -57,6 +57,8 @@ add_executable(
     "botctl/bot/types/user_profile_photos.cpp"
     "botctl/bot/types/file.cpp"
     "botctl/bot/types/reply_keyboard_markup.cpp"
+    "botctl/bot/types/keyboard_button.cpp"
+    "botctl/bot/types/keyboard_button_poll_type.cpp"
 )
 target_link_libraries(cbot gflags pthread ${SRC_CC})
 add_dependencies(cbot rapidjson)
