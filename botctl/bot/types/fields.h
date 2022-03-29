@@ -72,4 +72,12 @@ namespace bot::types::fields {
     extern const char* MESSAGE_AUTO_DELETE_TIMER_CHANGED;
     extern const char* START_DATE;
     extern const char* USERS;
+    extern const char* TOTAL_COUNT;
+    extern const char* PHOTOS;
+    extern const char* FILE_PATH;
+    extern const char* KEYBOARD;
+    extern const char* RESIZE_KEYBOARD;
+    extern const char* ONE_TIME_KEYBOARD;
+    extern const char* INPUT_FIELD_PLACEHOLDER;
+    extern const char* SELECTIVE;
 }

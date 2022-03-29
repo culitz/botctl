@@ -69,4 +69,12 @@ namespace bot::types::fields {
     const char* MESSAGE_AUTO_DELETE_TIMER_CHANGED = "message_auto_delete_time"; 
     const char* START_DATE = "start_date";
     const char* USERS = "users";
+    const char* TOTAL_COUNT = "total_count";
+    const char* PHOTOS = "photos";
+    const char* FILE_PATH = "file_path";
+    const char* KEYBOARD = "keyboard";
+    const char* RESIZE_KEYBOARD = "KEYBOARD";
+    const char* ONE_TIME_KEYBOARD = "one_time_keyboard";
+    const char* INPUT_FIELD_PLACEHOLDER = "input_field_placeholder";
+    const char* SELECTIVE = "selective";
 }

@@ -2,6 +2,9 @@
 
 namespace bot::types {
 
+PhotoSize::PhotoSize(int width, int height) : 
+    BaseFile(), width(width), height(height) {}
+
 PhotoSize::PhotoSize(string &json) : BaseFile() {
     fromString(json);
 }

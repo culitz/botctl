@@ -16,6 +16,7 @@ public:
     PhotoSize() : BaseFile() {}
     PhotoSize(string&);
     PhotoSize(Value const&);
+    PhotoSize(int width, int height);
     virtual ~PhotoSize() {}
 
 protected:

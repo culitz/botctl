@@ -54,6 +54,9 @@ add_executable(
     "botctl/bot/types/voice_chat_scheduled.cpp"
     "botctl/bot/types/voice_chat_ended.cpp"
     "botctl/bot/types/voice_chat_participants_invited.cpp"
+    "botctl/bot/types/user_profile_photos.cpp"
+    "botctl/bot/types/file.cpp"
+    "botctl/bot/types/reply_keyboard_markup.cpp"
 )
 target_link_libraries(cbot gflags pthread ${SRC_CC})
 add_dependencies(cbot rapidjson)
