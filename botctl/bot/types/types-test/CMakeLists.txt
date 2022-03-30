@@ -43,6 +43,7 @@ add_executable(
     "file_type_test.cpp"
     "keyboard_button_type_test.cpp"
     "keyboard_button_poll_type_test.cpp"
+    "reply_keyboard_remove_type_test.cpp"
 
     "../fields.cpp"
     "../base_object.cpp"
@@ -73,6 +74,7 @@ add_executable(
     "../file.cpp"
     "../keyboard_button.cpp"
     "../keyboard_button_poll_type.cpp"
+    "../reply_keyboard_remove.cpp"
 )
 
 target_link_libraries(types_test GTest::GTest GTest::Main)

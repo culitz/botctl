@@ -83,4 +83,12 @@ namespace bot::types::fields {
     extern const char* REQUEST_CONTACT;
     extern const char* REQUEST_LOCATION;
     extern const char* REQUEST_POLL;
+    extern const char* REMOVE_KEYBOARD;
+    extern const char* URL;
+    extern const char* LOGIN_URL;
+    extern const char* CALLBACK_DATA;
+    extern const char* SWITCH_INLINE_QUERY;
+    extern const char* SWITCH_INLINE_QUERY_CURRENT_CHAT;
+    extern const char* CALLBACK_GAME;
+    extern const char* PAY;
 }

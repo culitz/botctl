@@ -80,4 +80,12 @@ namespace bot::types::fields {
     const char* REQUEST_CONTACT = "request_contact";
     const char* REQUEST_LOCATION = "request_location";
     const char* REQUEST_POLL = "request_poll";
+    const char* REMOVE_KEYBOARD = "remove_keyboard";
+    const char* URL = "url";
+    const char* LOGIN_URL = "login_url";
+    const char* CALLBACK_DATA = "callback_data";
+    const char* SWITCH_INLINE_QUERY = "switch_inline_query";
+    const char* SWITCH_INLINE_QUERY_CURRENT_CHAT = "switch_inline_query_current_chat";
+    const char* CALLBACK_GAME = "callback_game";
+    const char* PAY = "pay";
 }
