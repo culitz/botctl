@@ -17,7 +17,7 @@ KeyboardButton::KeyboardButton(
     string& text,
     std::optional<bool> request_contact,
     std::optional<bool> request_location,
-    std::optional<BaseObject> request_poll
+    std::optional<KeyboardButtonPollType> request_poll
 ) : 
     BaseObject(),
     text(text),
@@ -27,5 +27,34 @@ KeyboardButton::KeyboardButton(
 
 KeyboardButton::~KeyboardButton() {}
 
+void KeyboardButton::fillDocument(Writer& writer) const {
+    writer.Key(fields::TEXT);
+    writer.String(text.c_str());
+    
+    if(request_contact) {
+        writer.Key(fields::REQUEST_CONTACT);
+        writer.Bool(request_contact.value());
+    }
+
+    if(request_location) {
+        writer.Key(fields::REQUEST_LOCATION);
+        writer.Bool(request_location.value());
+    }
+
+    if(request_poll) {
+        writer.Key(fields::REQUEST_POLL);
+        request_poll->asNestedObject(writer);
+    }
+}
+
+void KeyboardButton::fillObject(Value const& document) {
+    text = document[fields::TEXT].GetString();
+    request_contact = getOptBool(document, fields::REQUEST_CONTACT);
+    request_location = getOptBool(document, fields::REQUEST_LOCATION);
+    if(document.HasMember(fields::REQUEST_POLL)) {
+        KeyboardButtonPollType poll(document[fields::REQUEST_POLL]);
+        request_poll.emplace(poll);
+    }
+}
 
 }

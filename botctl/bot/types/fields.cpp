@@ -77,4 +77,7 @@ namespace bot::types::fields {
     const char* ONE_TIME_KEYBOARD = "one_time_keyboard";
     const char* INPUT_FIELD_PLACEHOLDER = "input_field_placeholder";
     const char* SELECTIVE = "selective";
+    const char* REQUEST_CONTACT = "request_contact";
+    const char* REQUEST_LOCATION = "request_location";
+    const char* REQUEST_POLL = "request_poll";
 }

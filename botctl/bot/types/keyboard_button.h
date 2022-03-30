@@ -1,4 +1,7 @@
+#pragma once
 #include "base_object.h"
+#include "keyboard_button_poll_type.h"
+#include "fields.h"
 
 
 namespace bot::types {
@@ -8,8 +11,7 @@ public:
     string text;
     std::optional<bool> request_contact;
     std::optional<bool> request_location;
-    /// \todo change to KeyboardButtonPollType
-    std::optional<BaseObject> request_poll;
+    std::optional<KeyboardButtonPollType> request_poll;
 
     KeyboardButton();
     KeyboardButton(string&);
@@ -18,10 +20,13 @@ public:
         string& text,
         std::optional<bool> request_contact,
         std::optional<bool> request_location,
-        std::optional<BaseObject> request_poll
+        std::optional<KeyboardButtonPollType> request_poll
     );
 
     virtual ~KeyboardButton();
+protected:
+    virtual void fillDocument(Writer& writer) const;
+    virtual void fillObject(Value const& document);
 };
 
 

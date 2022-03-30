@@ -27,4 +27,9 @@ void KeyboardButtonPollType::fillObject(Value const& document) {
         type = document[fields::TYPE].GetString();
     }
 }
+
+size_t KeyboardButtonPollType::hash() const {
+    return std::hash<string>{}(type.value());
+}
+
 }

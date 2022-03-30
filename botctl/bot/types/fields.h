@@ -80,4 +80,7 @@ namespace bot::types::fields {
     extern const char* ONE_TIME_KEYBOARD;
     extern const char* INPUT_FIELD_PLACEHOLDER;
     extern const char* SELECTIVE;
+    extern const char* REQUEST_CONTACT;
+    extern const char* REQUEST_LOCATION;
+    extern const char* REQUEST_POLL;
 }

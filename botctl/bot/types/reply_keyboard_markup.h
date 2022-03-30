@@ -2,13 +2,13 @@
 #include <vector>
 #include "base_object.h"
 #include "fields.h"
-#include "photo_size.h"
+#include "keyboard_button.h"
 
 namespace bot::types {
 
 class ReplyKeyboardMarkup : public BaseObject {
 public:
-    std::vector<BaseObject> keyboard;
+    std::vector<KeyboardButton> keyboard;
     std::optional<bool> resize_keyboard;
     std::optional<bool> one_time_keyboard;
     std::optional<string> input_field_placeholder;
@@ -18,7 +18,7 @@ public:
     ReplyKeyboardMarkup(string&);
     ReplyKeyboardMarkup(const Value&);
     ReplyKeyboardMarkup(
-        std::vector<BaseObject>& keyboard,
+        std::vector<KeyboardButton>& keyboard,
         std::optional<bool> resize_keyboard,
         std::optional<bool> one_time_keyboard,
         std::optional<string> input_field_placeholder,
