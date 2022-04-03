@@ -61,6 +61,7 @@ add_executable(
     "botctl/bot/types/keyboard_button_poll_type.cpp"
     "botctl/bot/types/reply_keyboard_remove.cpp"
     "botctl/bot/types/inline_keyboard_button.cpp"
+    "botctl/bot/types/login_url.cpp"
 )
 target_link_libraries(cbot gflags pthread ${SRC_CC})
 add_dependencies(cbot rapidjson)

@@ -88,4 +88,7 @@ namespace bot::types::fields {
     const char* SWITCH_INLINE_QUERY_CURRENT_CHAT = "switch_inline_query_current_chat";
     const char* CALLBACK_GAME = "callback_game";
     const char* PAY = "pay";
+    const char* FORWARD_TEXT = "forward_text";
+    const char* BOT_USERNAME = "bot_username";
+    const char* REQUEST_WRITE_ACCESS = "request_write_access";
 }

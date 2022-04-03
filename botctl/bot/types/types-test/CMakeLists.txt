@@ -75,6 +75,7 @@ add_executable(
     "../keyboard_button.cpp"
     "../keyboard_button_poll_type.cpp"
     "../reply_keyboard_remove.cpp"
+    "../login_url.cpp"
 )
 
 target_link_libraries(types_test GTest::GTest GTest::Main)

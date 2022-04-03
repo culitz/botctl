@@ -24,9 +24,7 @@ void InlineKeyboardButton::fillDocument(Writer& writer) const {
 
     if(login_url) {
         writer.Key(fields::LOGIN_URL);
-        /// @todo change on LoginUrl
-        BaseObject b;
-        b.asNestedObject(writer);
+        login_url->asNestedObject(writer);
     }
 
     if(callback_data) {
@@ -49,7 +47,16 @@ void InlineKeyboardButton::fillDocument(Writer& writer) const {
 }
 
 void InlineKeyboardButton::fillObject(Value const& document) {
+    text = document[fields::TEXT].GetString();
+    url = document[fields::URL].GetString();
 
+    if(document.HasMember(fields::LOGIN_URL)) {
+        LoginUrl lurl(document);
+        login_url.emplace(lurl);
+    }
+
+    callback_data = getOptString(document, fields::CALLBACK_DATA);
+    switch_inline_query = getOptString(document, fields::SWITCH_INLINE_QUERY);
 }
 
 

@@ -91,4 +91,7 @@ namespace bot::types::fields {
     extern const char* SWITCH_INLINE_QUERY_CURRENT_CHAT;
     extern const char* CALLBACK_GAME;
     extern const char* PAY;
+    extern const char* FORWARD_TEXT;
+    extern const char* BOT_USERNAME;
+    extern const char* REQUEST_WRITE_ACCESS;
 }

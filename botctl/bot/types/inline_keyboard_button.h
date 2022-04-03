@@ -1,10 +1,11 @@
 #include "base_object.h"
+#include "login_url.h"
 #include "fields.h"
 
 
 namespace bot::types {
 
-
+/// @todo Write a unittests
 class InlineKeyboardButton : public BaseObject {
 public:
     string text;
@@ -13,7 +14,7 @@ public:
     std::optional<string> callback_data;
     std::optional<string> switch_inline_query;
     std::optional<string> switch_inline_query_current_chat;
-    std::optional<BaseObject> callback_game;
+    std::optional<LoginUrl> callback_game;
     std::optional<bool> pay;
 
     InlineKeyboardButton();

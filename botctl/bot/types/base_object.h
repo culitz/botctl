@@ -5,7 +5,7 @@
 #include <map>
 #include <type_traits>
 #include <algorithm>
-#include <any>
+#include <typeinfo>
 #include "rapidjson/document.h"
 #include "rapidjson/stringbuffer.h"
 #include "rapidjson/writer.h"
@@ -94,8 +94,8 @@ public:
 
     void asNestedObject(Writer& writer) const;
     virtual void fromNestedObject(Value const& value);
+
 protected:
-    rapidjson::Document document;
     virtual void fillDocument(Writer& writer) const;
     virtual void fillObject(Value const& document);
 
