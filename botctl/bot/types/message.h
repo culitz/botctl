@@ -109,6 +109,7 @@ public:
     std::optional<BaseObject>                           voice_chat_participants_invited;
     std::optional<BaseObject>                           reply_markup;
 
+    Message() {}
     Message(string& json);
     ~Message();
 

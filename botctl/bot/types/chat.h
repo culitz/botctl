@@ -39,15 +39,15 @@ public:
     std::optional<string> username;
     std::optional<string> first_name;
     std::optional<string> last_name;
-    // @todo change to PhotoObject type
+    /// @todo change to PhotoObject type
     std::optional<BaseObject> photo;
     std::optional<string> bio;
     std::optional<bool> has_private_forwards;
     std::optional<string> description;
     std::optional<string> invite_link;
-    // @todo change to message type
+    /// @todo change to message type
     std::optional<BaseObject> pinned_message;
-    // @todo: change to Permission type
+    /// @todo: change to Permission type
     std::optional<BaseObject> permissions;
     std::optional<int> slow_mode_delay;
     std::optional<int> message_auto_delete_time;
@@ -55,7 +55,7 @@ public:
     std::optional<string> sticker_set_name;
     std::optional<bool> can_set_sticker_set;
     std::optional<int> linked_chat_id;
-    // @todo change to ChatLocation object
+    /// @todo change to ChatLocation object
     std::optional<BaseObject> location;
 
 

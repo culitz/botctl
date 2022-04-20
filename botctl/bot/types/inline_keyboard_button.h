@@ -1,7 +1,7 @@
 #include "base_object.h"
 #include "login_url.h"
 #include "fields.h"
-
+#include "login_url.h"
 
 namespace bot::types {
 
@@ -10,11 +10,11 @@ class InlineKeyboardButton : public BaseObject {
 public:
     string text;
     string url;
-    std::optional<BaseObject> login_url;
+    std::optional<LoginUrl> login_url;
     std::optional<string> callback_data;
     std::optional<string> switch_inline_query;
     std::optional<string> switch_inline_query_current_chat;
-    std::optional<LoginUrl> callback_game;
+    std::optional<BaseObject> callback_game;
     std::optional<bool> pay;
 
     InlineKeyboardButton();

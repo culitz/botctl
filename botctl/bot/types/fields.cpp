@@ -91,4 +91,10 @@ namespace bot::types::fields {
     const char* FORWARD_TEXT = "forward_text";
     const char* BOT_USERNAME = "bot_username";
     const char* REQUEST_WRITE_ACCESS = "request_write_access";
+    const char* MESSAGE = "message";
+    const char* INLINE_MESSAGE_ID = "inline_message_id";
+    const char* CHAT_INSTANCE = "chat_instance";
+    const char* DATA = "data";
+    const char* GAME_SHORT_NAME = "game_short_name";
+    const char* FROM = "from";
 }

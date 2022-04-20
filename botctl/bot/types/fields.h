@@ -94,4 +94,10 @@ namespace bot::types::fields {
     extern const char* FORWARD_TEXT;
     extern const char* BOT_USERNAME;
     extern const char* REQUEST_WRITE_ACCESS;
+    extern const char* MESSAGE;
+    extern const char* INLINE_MESSAGE_ID;
+    extern const char* CHAT_INSTANCE;
+    extern const char* DATA;
+    extern const char* GAME_SHORT_NAME;
+    extern const char* FROM;
 }

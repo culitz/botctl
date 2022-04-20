@@ -29,11 +29,12 @@ User::User(
     std::optional<bool> supports_inline_queries
 ) : BaseObject(), 
     first_name(first_name),
+    is_bot(is_bot),
     last_name(last_name),
     username(username),
     language_code(language_code),
     can_join_groups(can_join_groups),
-    can_read_all_group_messages(can_join_groups),
+    can_read_all_group_messages(can_read_all_group_messages),
     supports_inline_queries(supports_inline_queries)
 {}
 

@@ -17,8 +17,10 @@ TEST(voice_chat_participants_invited_test, serialization) {
     VoiceChatParticipantsInvited object1(json);
 
     for(size_t i = 0; i < users.size(); i++) {
-        ASSERT_EQ(object0.users[i].first_name, object1.users[i].first_name);
-        ASSERT_EQ(object0.users[i].is_bot, object1.users[i].is_bot);
+        bool is_same_name = object0.users[i].first_name == object1.users[i].first_name;
+        bool is_same_flag = object0.users[i].is_bot == object1.users[i].is_bot;
+        ASSERT_TRUE(is_same_name);
+        ASSERT_TRUE(is_same_flag);
     }
 }
 
