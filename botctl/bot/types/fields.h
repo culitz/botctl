@@ -101,4 +101,8 @@ namespace bot::types::fields {
     extern const char* GAME_SHORT_NAME;
     extern const char* FROM;
     extern const char* FORCE_REPLY;
+    extern const char* SMALL_FILE_ID;
+    extern const char* SMALL_FILE_UNIQUE_ID;
+    extern const char* BIG_FILE_ID;
+    extern const char* BIG_FILE_UNIQUE_ID;
 }

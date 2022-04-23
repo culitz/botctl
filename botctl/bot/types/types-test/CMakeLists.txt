@@ -46,6 +46,7 @@ add_executable(
     "reply_keyboard_remove_type_test.cpp"
     "callbackquery_test.cpp"
     "force_reply_test.cpp"
+    "chat_photo_test.cpp"
 
     "../fields.cpp"
     "../base_object.cpp"
@@ -80,6 +81,7 @@ add_executable(
     "../login_url.cpp"
     "../callbackquery.cpp"
     "../force_reply.cpp"
+    "../chat_photo.cpp"
 )
 
 target_link_libraries(types_test GTest::GTest GTest::Main)

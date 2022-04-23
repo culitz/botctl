@@ -98,4 +98,8 @@ namespace bot::types::fields {
     const char* GAME_SHORT_NAME = "game_short_name";
     const char* FROM = "from";
     const char* FORCE_REPLY = "force_reply";
+    const char* SMALL_FILE_ID = "small_file_id";
+    const char* SMALL_FILE_UNIQUE_ID = "small_file_unique_id";
+    const char* BIG_FILE_ID = "big_file_id";
+    const char* BIG_FILE_UNIQUE_ID = "big_file_unique_id";
 }

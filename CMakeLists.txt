@@ -64,6 +64,7 @@ add_executable(
     "botctl/bot/types/login_url.cpp"
     "botctl/bot/types/callbackquery.cpp"
     "botctl/bot/types/force_reply.cpp"
+    "botctl/bot/types/chat_photo.cpp"
 )
 target_link_libraries(cbot gflags pthread ${SRC_CC})
 add_dependencies(cbot rapidjson)
