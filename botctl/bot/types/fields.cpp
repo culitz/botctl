@@ -97,4 +97,5 @@ namespace bot::types::fields {
     const char* DATA = "data";
     const char* GAME_SHORT_NAME = "game_short_name";
     const char* FROM = "from";
+    const char* FORCE_REPLY = "force_reply";
 }

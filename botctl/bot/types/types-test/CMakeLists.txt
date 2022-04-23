@@ -44,6 +44,8 @@ add_executable(
     "keyboard_button_type_test.cpp"
     "keyboard_button_poll_type_test.cpp"
     "reply_keyboard_remove_type_test.cpp"
+    "callbackquery_test.cpp"
+    "force_reply_test.cpp"
 
     "../fields.cpp"
     "../base_object.cpp"
@@ -76,6 +78,8 @@ add_executable(
     "../keyboard_button_poll_type.cpp"
     "../reply_keyboard_remove.cpp"
     "../login_url.cpp"
+    "../callbackquery.cpp"
+    "../force_reply.cpp"
 )
 
 target_link_libraries(types_test GTest::GTest GTest::Main)

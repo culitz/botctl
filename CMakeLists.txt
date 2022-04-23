@@ -63,6 +63,7 @@ add_executable(
     "botctl/bot/types/inline_keyboard_button.cpp"
     "botctl/bot/types/login_url.cpp"
     "botctl/bot/types/callbackquery.cpp"
+    "botctl/bot/types/force_reply.cpp"
 )
 target_link_libraries(cbot gflags pthread ${SRC_CC})
 add_dependencies(cbot rapidjson)

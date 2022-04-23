@@ -100,4 +100,5 @@ namespace bot::types::fields {
     extern const char* DATA;
     extern const char* GAME_SHORT_NAME;
     extern const char* FROM;
+    extern const char* FORCE_REPLY;
 }
