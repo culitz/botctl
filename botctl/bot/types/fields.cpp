@@ -102,4 +102,12 @@ namespace bot::types::fields {
     const char* SMALL_FILE_UNIQUE_ID = "small_file_unique_id";
     const char* BIG_FILE_ID = "big_file_id";
     const char* BIG_FILE_UNIQUE_ID = "big_file_unique_id";
+    const char* CREATOR = "creator";
+    const char* CREATES_JOIN_REQUEST = "creates_join_request";
+    const char* IS_PRIMARY = "is_primary";
+    const char* IS_REVOKED = "is_revoked";
+    const char* NAME = "name";
+    const char* EXPIRE_DATE = "expire_date";
+    const char* MEMBER_LIMIT = "member_limit";
+    const char* PENDING_JOIN_REQUEST_CONST = "pending_join_request_count";
 }

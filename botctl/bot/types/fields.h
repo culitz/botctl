@@ -105,4 +105,12 @@ namespace bot::types::fields {
     extern const char* SMALL_FILE_UNIQUE_ID;
     extern const char* BIG_FILE_ID;
     extern const char* BIG_FILE_UNIQUE_ID;
+    extern const char* CREATOR;
+    extern const char* CREATES_JOIN_REQUEST;
+    extern const char* IS_PRIMARY;
+    extern const char* IS_REVOKED;
+    extern const char* NAME;
+    extern const char* EXPIRE_DATE;
+    extern const char* MEMBER_LIMIT;
+    extern const char* PENDING_JOIN_REQUEST_CONST;
 }

@@ -47,6 +47,7 @@ add_executable(
     "callbackquery_test.cpp"
     "force_reply_test.cpp"
     "chat_photo_test.cpp"
+    "chat_invite_link_test.cpp"
 
     "../fields.cpp"
     "../base_object.cpp"
@@ -82,6 +83,7 @@ add_executable(
     "../callbackquery.cpp"
     "../force_reply.cpp"
     "../chat_photo.cpp"
+    "../chat_invite_link.cpp"
 )
 
 target_link_libraries(types_test GTest::GTest GTest::Main)
