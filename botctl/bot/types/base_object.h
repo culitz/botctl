@@ -96,6 +96,14 @@ public:
     void asNestedObject(Writer& writer) const;
     virtual void fromNestedObject(Value const& value);
 
+    static size_t combineHash(std::vector<size_t>& hash_vect) {
+        size_t h;
+        for(size_t item : hash_vect) {
+            h ^= item + 0x9e3779b9 + (h<<6) + (h>>2);
+        }
+        return h;
+    }
+
 protected:
     virtual void fillDocument(Writer& writer) const;
     virtual void fillObject(Value const& document);

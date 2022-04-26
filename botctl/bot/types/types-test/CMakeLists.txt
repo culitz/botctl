@@ -48,6 +48,9 @@ add_executable(
     "force_reply_test.cpp"
     "chat_photo_test.cpp"
     "chat_invite_link_test.cpp"
+    "chat_administrator_rights_test"
+    "chat_member_test.cpp"
+    "chat_member_owner_test.cpp"
 
     "../fields.cpp"
     "../base_object.cpp"
@@ -84,6 +87,9 @@ add_executable(
     "../force_reply.cpp"
     "../chat_photo.cpp"
     "../chat_invite_link.cpp"
+    "../chat_administrator_rights.cpp"
+    "../chat_member.cpp"
+    "../chat_member_owner.cpp"
 )
 
 target_link_libraries(types_test GTest::GTest GTest::Main)

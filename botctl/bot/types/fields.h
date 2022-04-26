@@ -113,4 +113,16 @@ namespace bot::types::fields {
     extern const char* EXPIRE_DATE;
     extern const char* MEMBER_LIMIT;
     extern const char* PENDING_JOIN_REQUEST_CONST;
+    extern const char* CAN_MANAGE_CHAT;
+    extern const char* CAN_DELETE_MESSAGES;
+    extern const char* CAN_MANAGE_VIDEO_CHATS;
+    extern const char* CAN_RESTRICT_MEMBERS;
+    extern const char* CAN_PROMOTE_MEMBERS;
+    extern const char* CAN_CHANGE_INFO;
+    extern const char* CAN_INVITE_USERS;
+    extern const char* CAN_POST_MESSAGES;
+    extern const char* CAN_EDIT_MESSAGES;
+    extern const char* CAN_PIN_MESSAGES;
+    extern const char* STATUS;
+    extern const char* CUSTOM_TITLE;
 }

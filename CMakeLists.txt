@@ -66,6 +66,9 @@ add_executable(
     "botctl/bot/types/force_reply.cpp"
     "botctl/bot/types/chat_photo.cpp"
     "botctl/bot/types/chat_invite_link.cpp"
+    "botctl/bot/types/chat_administrator_rights.cpp"
+    "botctl/bot/types/chat_member.cpp"
+    "botctl/bot/types/chat_member_owner.cpp"
 )
 target_link_libraries(cbot gflags pthread ${SRC_CC})
 add_dependencies(cbot rapidjson)

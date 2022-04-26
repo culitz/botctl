@@ -96,5 +96,32 @@ void User::fillDocument(Writer &writer) const {
 }
 
 
+size_t User::hash() const {
+    std::vector<size_t> hash_vect;
+    hash_vect.push_back(BaseObject::hash());
+    hash_vect.push_back(std::hash<bool>{}(is_bot));
+    hash_vect.push_back(std::hash<std::string>{}(first_name));
+
+    if(last_name)
+        hash_vect.push_back(std::hash<std::string>{}(*last_name));
+
+    if(username)
+        hash_vect.push_back(std::hash<std::string>{}(*username));
+
+    if(language_code)
+        hash_vect.push_back(std::hash<std::string>{}(*language_code));
+    
+    if(can_join_groups)
+        hash_vect.push_back(std::hash<bool>{}(*can_join_groups));
+
+    if(can_read_all_group_messages)
+        hash_vect.push_back(std::hash<bool>{}(*can_read_all_group_messages));
+
+    if(supports_inline_queries)
+        hash_vect.push_back(std::hash<bool>{}(*supports_inline_queries));
+
+    return BaseObject::combineHash(hash_vect);
+}
+
 
 }

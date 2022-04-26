@@ -42,6 +42,7 @@ public:
     virtual ~User();
 
     virtual void fromNestedObject(const Value &value) override;
+    virtual size_t hash() const override;
 private:
     typedef BaseObject Parent;
     virtual void fillObject(rapidjson::Value const& document) override;

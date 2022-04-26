@@ -110,4 +110,16 @@ namespace bot::types::fields {
     const char* EXPIRE_DATE = "expire_date";
     const char* MEMBER_LIMIT = "member_limit";
     const char* PENDING_JOIN_REQUEST_CONST = "pending_join_request_count";
+    const char* CAN_MANAGE_CHAT = "can_manage_chat";
+    const char* CAN_DELETE_MESSAGES = "can_delete_messages";
+    const char* CAN_MANAGE_VIDEO_CHATS = "can_manage_video_chats";
+    const char* CAN_RESTRICT_MEMBERS = "can_restrict_members";
+    const char* CAN_PROMOTE_MEMBERS = "can_promote_members";
+    const char* CAN_CHANGE_INFO = "can_change_info";
+    const char* CAN_INVITE_USERS = "can_invite_users";
+    const char* CAN_POST_MESSAGES = "can_post_messages";
+    const char* CAN_EDIT_MESSAGES = "can_edit_messages";
+    const char* CAN_PIN_MESSAGES = "can_pin_messages";
+    const char* STATUS = "status";
+    const char* CUSTOM_TITLE = "custom_title";
 }
