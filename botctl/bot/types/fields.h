@@ -125,4 +125,19 @@ namespace bot::types::fields {
     extern const char* CAN_PIN_MESSAGES;
     extern const char* STATUS;
     extern const char* CUSTOM_TITLE;
+    extern const char* CAN_BE_EDITED;
+    extern const char* IS_MEMBER;
+    extern const char* CAN_CHANGE_INFO;
+    extern const char* CAN_INVITE_USERS;
+    extern const char* CAN_PIN_MESSAGES;
+    extern const char* CAN_SEND_MESSAGES;
+    extern const char* CAN_SEND_MEDIA_MESSAGES;
+    extern const char* CAN_SEND_POLLS;
+    extern const char* CAN_SEND_OTHER_MESSAGES;
+    extern const char* CAN_ADD_WEB_PAGE_PREVIEWS;
+    extern const char* UNTIL_DATE;
+    extern const char* CHAT;
+    extern const char* DATE;
+    extern const char* OLD_CHAT_MEMBER;
+    extern const char* NEW_CHAT_MEMBER;
 }

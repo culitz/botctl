@@ -51,6 +51,12 @@ add_executable(
     "chat_administrator_rights_test"
     "chat_member_test.cpp"
     "chat_member_owner_test.cpp"
+    "chat_member_administrator_test.cpp"
+    "chat_member_member_test.cpp"
+    "chat_member_restricted_test.cpp"
+    "chat_member_left_test.cpp"
+    "chat_member_banned_test.cpp"
+    "chat_member_updated_test.cpp"
 
     "../fields.cpp"
     "../base_object.cpp"
@@ -90,6 +96,12 @@ add_executable(
     "../chat_administrator_rights.cpp"
     "../chat_member.cpp"
     "../chat_member_owner.cpp"
+    "../chat_member_administrator.cpp"
+    "../chat_member_member.cpp"
+    "../chat_member_restricted.cpp"
+    "../chat_member_left.cpp"
+    "../chat_member_banned.cpp"
+    "../chat_member_updated.cpp"
 )
 
 target_link_libraries(types_test GTest::GTest GTest::Main)

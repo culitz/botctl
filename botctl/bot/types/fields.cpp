@@ -122,4 +122,16 @@ namespace bot::types::fields {
     const char* CAN_PIN_MESSAGES = "can_pin_messages";
     const char* STATUS = "status";
     const char* CUSTOM_TITLE = "custom_title";
+    const char* CAN_BE_EDITED = "can_be_edited";
+    const char* IS_MEMBER = "is_member";
+    const char* CAN_SEND_MESSAGES = "can_send_messages";
+    const char* CAN_SEND_MEDIA_MESSAGES = "can_send_media_messages";
+    const char* CAN_SEND_POLLS = "can_send_polls";
+    const char* CAN_SEND_OTHER_MESSAGES = "can_send_other_messages";
+    const char* CAN_ADD_WEB_PAGE_PREVIEWS = "can_add_web_page_previews";
+    const char* UNTIL_DATE = "until_date";
+    const char* CHAT = "chat";
+    const char* DATE = "date";
+    const char* OLD_CHAT_MEMBER = "old_chat_member";
+    const char* NEW_CHAT_MEMBER = "new_chat_member";
 }

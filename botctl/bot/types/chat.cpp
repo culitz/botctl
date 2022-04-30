@@ -7,6 +7,48 @@ Chat::Chat() : BaseObject()
 
 }
 
+Chat::Chat(
+    string                          type,
+    std::optional<string>           title,
+    std::optional<string>           username,
+    std::optional<string>           first_name,
+    std::optional<string>           last_name,
+    std::optional<BaseObject>       photo,
+    std::optional<string>           bio,
+    std::optional<bool>             has_private_forwards,
+    std::optional<string>           description,
+    std::optional<string>           invite_link,
+    std::optional<BaseObject>       pinned_message,
+    std::optional<BaseObject>       permissions,
+    std::optional<int>              slow_mode_delay,
+    std::optional<int>              message_auto_delete_time,
+    std::optional<bool>             has_protected_content,
+    std::optional<string>           sticker_set_name,
+    std::optional<bool>             can_set_sticker_set,
+    std::optional<int>              linked_chat_id,
+    std::optional<BaseObject>       location
+) : BaseObject(), 
+    type(type),
+    title(title),
+    username(username),
+    first_name(first_name),
+    last_name(last_name),
+    photo(photo),
+    bio(bio),
+    has_private_forwards(has_private_forwards),
+    description(description),
+    invite_link(invite_link),
+    pinned_message(pinned_message),
+    permissions(permissions),
+    slow_mode_delay(slow_mode_delay),
+    message_auto_delete_time(message_auto_delete_time),
+    has_protected_content(has_protected_content),
+    sticker_set_name(sticker_set_name),
+    can_set_sticker_set(can_set_sticker_set),
+    linked_chat_id(linked_chat_id),
+    location(location)
+{}
+
 Chat::Chat(string& json) : BaseObject() {
     auto d = std::shared_ptr<rapidjson::Document>(new rapidjson::Document);
     d->Parse(json.c_str());

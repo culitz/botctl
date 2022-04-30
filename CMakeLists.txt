@@ -69,6 +69,12 @@ add_executable(
     "botctl/bot/types/chat_administrator_rights.cpp"
     "botctl/bot/types/chat_member.cpp"
     "botctl/bot/types/chat_member_owner.cpp"
+    "botctl/bot/types/chat_member_administrator.cpp"
+    "botctl/bot/types/chat_member_member.cpp"
+    "botctl/bot/types/chat_member_restricted.cpp"
+    "botctl/bot/types/chat_member_left.cpp"
+    "botctl/bot/types/chat_member_banned.cpp"
+    "botctl/bot/types/chat_member_updated.cpp"
 )
 target_link_libraries(cbot gflags pthread ${SRC_CC})
 add_dependencies(cbot rapidjson)

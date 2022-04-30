@@ -32,7 +32,28 @@ public:
 
     Chat();
     Chat(string& json);
-    ~Chat() {}
+    Chat(
+        string                          type,
+        std::optional<string>           title = {},
+        std::optional<string>           username = {},
+        std::optional<string>           first_name = {},
+        std::optional<string>           last_name = {},
+        std::optional<BaseObject>       photo = {},
+        std::optional<string>           bio = {},
+        std::optional<bool>             has_private_forwards = {},
+        std::optional<string>           description = {},
+        std::optional<string>           invite_link = {},
+        std::optional<BaseObject>       pinned_message = {},
+        std::optional<BaseObject>       permissions = {},
+        std::optional<int>              slow_mode_delay = {},
+        std::optional<int>              message_auto_delete_time = {},
+        std::optional<bool>             has_protected_content = {},
+        std::optional<string>           sticker_set_name = {},
+        std::optional<bool>             can_set_sticker_set = {},
+        std::optional<int>              linked_chat_id = {},
+        std::optional<BaseObject>       location = {}
+    );
+    virtual ~Chat() {}
 
     string type;
     std::optional<string> title;
