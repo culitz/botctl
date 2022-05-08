@@ -59,6 +59,7 @@ add_executable(
     "chat_member_updated_test.cpp"
     "chat_join_request_test.cpp"
     "chat_permissions_test.cpp"
+    "chat_location_test.cpp"
 
     "../fields.cpp"
     "../base_object.cpp"
@@ -106,6 +107,7 @@ add_executable(
     "../chat_member_updated.cpp"
     "../chat_join_request.cpp"
     "../chat_permissions.cpp"
+    "../chat_location.cpp"
 )
 
 target_link_libraries(types_test GTest::GTest GTest::Main)
