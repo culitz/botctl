@@ -134,4 +134,5 @@ namespace bot::types::fields {
     const char* DATE = "date";
     const char* OLD_CHAT_MEMBER = "old_chat_member";
     const char* NEW_CHAT_MEMBER = "new_chat_member";
+    const char* COMMAND = "command";
 }

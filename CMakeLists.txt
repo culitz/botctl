@@ -78,6 +78,7 @@ add_executable(
     "botctl/bot/types/chat_join_request.cpp"
     "botctl/bot/types/chat_permissions.cpp"
     "botctl/bot/types/chat_location.cpp"
+    "botctl/bot/types/bot_command.cpp"
 )
 target_link_libraries(cbot gflags pthread ${SRC_CC})
 add_dependencies(cbot rapidjson)
