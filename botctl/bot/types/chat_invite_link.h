@@ -2,6 +2,7 @@
 #include "base_object.h"
 #include "user.h"
 #include "fields.h"
+#include <iostream>
 
 namespace bot::types {
 
@@ -69,9 +70,10 @@ public:
      */
     std::optional<int> pending_join_request_count;
 
+    virtual size_t hash() const override;
 protected:
-    virtual void fillDocument(Writer& writer) const;
-    virtual void fillObject(Value const& document);	
+    virtual void fillDocument(Writer& writer) const override;
+    virtual void fillObject(Value const& document) override;	
 };
 
 }

@@ -85,4 +85,31 @@ void ChatInviteLink::fillObject(Value const& document) {
     pending_join_request_count = getOptInt(document, fields::PENDING_JOIN_REQUEST_CONST);
 }	
 
+size_t ChatInviteLink::hash() const {  
+    std::hash<bool> hasher_bool;
+    std::hash<int> hasher_int;
+    std::hash<string> hasher_str;
+
+    std::vector<size_t> hash_vect = {
+        hasher_str(invite_link),
+        hasher_bool(creates_join_request),
+        hasher_bool(is_primary),
+        hasher_bool(is_revoked)
+    };
+
+    if(name)
+        hash_vect.push_back(hasher_str(*name));
+    
+    if(expire_date)
+        hash_vect.push_back(hasher_int(*expire_date));
+
+    if(member_limit)
+        hash_vect.push_back(hasher_int(*member_limit));
+
+    if(pending_join_request_count)
+        hash_vect.push_back(hasher_int(*pending_join_request_count));
+    
+    return BaseObject::combineHash(hash_vect);
+}
+
 }

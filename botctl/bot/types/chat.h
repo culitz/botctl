@@ -3,6 +3,7 @@
 #include "base_object.h"
 #include <vector>
 #include "rapidjson/pointer.h"
+#include "fields.h"
 
 namespace bot::types {
 
@@ -30,10 +31,10 @@ public:
     inline static const string LINKED_CHAT_ID {"linked_chat_id"};
     inline static const string LOCATION {"location"};
 
-    Chat();
     Chat(string& json);
+    Chat(Value const&);
     Chat(
-        string                          type,
+        std::optional<string>           type = {},
         std::optional<string>           title = {},
         std::optional<string>           username = {},
         std::optional<string>           first_name = {},
@@ -55,7 +56,7 @@ public:
     );
     virtual ~Chat() {}
 
-    string type;
+    std::optional<string> type;
     std::optional<string> title;
     std::optional<string> username;
     std::optional<string> first_name;
@@ -79,10 +80,10 @@ public:
     /// @todo change to ChatLocation object
     std::optional<BaseObject> location;
 
-
+    virtual size_t hash() const override;
 protected:
-    virtual void fillObject(rapidjson::Value const& document);
-    virtual void fillDocument(Writer &writer) const;
+    virtual void fillObject(Value const& document) override;
+    virtual void fillDocument(Writer &writer) const override;
 private:
     typedef BaseObject Parent;
 };

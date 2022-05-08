@@ -72,7 +72,8 @@ TEST(type_chat, initialize_default_constructor)
 TEST(type_chat, initialize_from_string)
 {
     string json = dataSet();
-    Chat chat(json);
+    Chat chat;
+    chat.fromString(json);
 
     ASSERT_EQ(chat.id, 5);
     ASSERT_EQ(chat.type, "test_type");

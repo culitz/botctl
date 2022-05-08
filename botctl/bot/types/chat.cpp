@@ -1,14 +1,11 @@
 #include "chat.h"
 
+#include <iostream>
+
 namespace bot::types {
 
-Chat::Chat() : BaseObject()
-{
-
-}
-
 Chat::Chat(
-    string                          type,
+    std::optional<string>           type,
     std::optional<string>           title,
     std::optional<string>           username,
     std::optional<string>           first_name,
@@ -50,14 +47,16 @@ Chat::Chat(
 {}
 
 Chat::Chat(string& json) : BaseObject() {
-    auto d = std::shared_ptr<rapidjson::Document>(new rapidjson::Document);
-    d->Parse(json.c_str());
-    fillObject(*d);
+    fromString(json);
 }
 
-void Chat::fillObject(rapidjson::Value const &document) {
+Chat::Chat(Value const& document) : BaseObject() {
+    fillObject(document);
+}
+
+void Chat::fillObject(Value const& document) {
     Parent::fillObject(document);
-    type = document[TYPE.c_str()].GetString();
+    type = getOptString(document, fields::TYPE);
     title = getOptString(document, TITLE);
     username = getOptString(document, USERNAME);
     first_name = getOptString(document, FIRSTNAME);
@@ -81,31 +80,33 @@ void Chat::fillObject(rapidjson::Value const &document) {
 
 void Chat::fillDocument(Writer &writer) const {
     Parent::fillDocument(writer);
-    writer.Key(TYPE.c_str());
-    writer.String(type.c_str());
+    if(type) {
+        writer.Key(fields::TYPE);
+        writer.String(type->c_str());
+    }
     if(title)
     {
-        writer.Key(TITLE.c_str());
+        writer.Key(fields::TITLE);
         writer.String(title->c_str());
     }
     if(username)
     {
-        writer.Key(USERNAME.c_str());
+        writer.Key(fields::USERNAME);
         writer.String(username->c_str());
     }
     if(first_name)
     {
-        writer.Key(FIRSTNAME.c_str());
+        writer.Key(fields::FIRST_NAME);
         writer.String(first_name->c_str());
     }
     if(last_name)
     {
-        writer.Key(LASTNAME.c_str());
+        writer.Key(fields::LAST_NAME);
         writer.String(last_name->c_str());
     }
     if(bio)
     {
-        writer.Key(BIO.c_str());
+        writer.Key(fields::BIO);
         writer.String(bio->c_str());
     }
     if(has_private_forwards)
@@ -155,4 +156,26 @@ void Chat::fillDocument(Writer &writer) const {
     }
 }
 
+size_t Chat::hash() const {
+    std::hash<string> hasher_str;
+    std::vector<size_t> hash_vect = {
+        Parent::hash()
+    };
+    if(type)
+        hash_vect.push_back(hasher_str(*type));
+
+    if(title)
+        hash_vect.push_back(hasher_str(*title));
+
+    if(username)
+        hash_vect.push_back(hasher_str(*username));
+
+    if(first_name)
+        hash_vect.push_back(hasher_str(*first_name));
+
+    if(last_name)
+        hash_vect.push_back(hasher_str(*last_name));
+    
+    return Parent::combineHash(hash_vect);
+}
 }

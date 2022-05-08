@@ -43,7 +43,6 @@ size_t BaseObject::hash() const {
 
 
 std::optional<string> BaseObject::getOptString(Value const& value, string key) {
-    std::cout << key << std::endl;
     if(value.HasMember(key.c_str())) {
         string s = value[key.c_str()].GetString();
         return std::optional<string>(s);
@@ -74,8 +73,7 @@ void BaseObject::asNestedObject(Writer &writer) const {
 }
 
 void BaseObject::fromNestedObject(Value const &value) {
-    if(value.HasMember(ID_NAME.c_str()))
-        id = value[ID_NAME.c_str()].GetInt();
+    fillObject(value);
 }
 
 void BaseObject::fromString(const string& object) {
