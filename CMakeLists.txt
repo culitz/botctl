@@ -27,6 +27,7 @@ add_subdirectory("botctl/bot/types/types-test")
 add_executable(
     cbot
     main.cpp
+    "botctl/bot/types/constants.cpp"
     "botctl/bot/types/fields.cpp"
     "botctl/bot/types/base_object.cpp"
     "botctl/bot/types/base_file.cpp"
@@ -79,6 +80,9 @@ add_executable(
     "botctl/bot/types/chat_permissions.cpp"
     "botctl/bot/types/chat_location.cpp"
     "botctl/bot/types/bot_command.cpp"
+    "botctl/bot/types/bot_command_scope.cpp"
+    "botctl/bot/types/bot_command_scope_default.cpp"
+    "botctl/bot/types/bot_command_scope_all_private_chats.cpp"
 )
 target_link_libraries(cbot gflags pthread ${SRC_CC})
 add_dependencies(cbot rapidjson)

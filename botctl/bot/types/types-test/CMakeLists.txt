@@ -61,8 +61,12 @@ add_executable(
     "chat_permissions_test.cpp"
     "chat_location_test.cpp"
     "bot_command_test.cpp"
+    "bot_command_scope_test.cpp"
+    "bot_command_scope_default_test.cpp"
+    "bot_command_scope_all_private_chats_test.cpp"
 
     "../fields.cpp"
+    "../constants.cpp"
     "../base_object.cpp"
     "../base_file.cpp"
     "../chat.cpp"
@@ -110,6 +114,9 @@ add_executable(
     "../chat_permissions.cpp"
     "../chat_location.cpp"
     "../bot_command.cpp"
+    "../bot_command_scope.cpp"
+    "../bot_command_scope_default.cpp"
+    "../bot_command_scope_all_private_chats.cpp"
 )
 
 target_link_libraries(types_test GTest::GTest GTest::Main)
