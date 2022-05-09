@@ -141,4 +141,5 @@ namespace bot::types::fields {
     extern const char* OLD_CHAT_MEMBER;
     extern const char* NEW_CHAT_MEMBER;
     extern const char* COMMAND;
+    extern const char* CHAT_ID;
 }

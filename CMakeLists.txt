@@ -83,6 +83,9 @@ add_executable(
     "botctl/bot/types/bot_command_scope.cpp"
     "botctl/bot/types/bot_command_scope_default.cpp"
     "botctl/bot/types/bot_command_scope_all_private_chats.cpp"
+    "botctl/bot/types/bot_command_scope_all_chat_administrators.cpp"
+    "botctl/bot/types/bot_command_scope_chat_administrators.cpp"
+    "botctl/bot/types/bot_command_scope_chat_member.cpp"
 )
 target_link_libraries(cbot gflags pthread ${SRC_CC})
 add_dependencies(cbot rapidjson)
