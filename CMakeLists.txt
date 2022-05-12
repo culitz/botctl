@@ -86,6 +86,11 @@ add_executable(
     "botctl/bot/types/bot_command_scope_all_chat_administrators.cpp"
     "botctl/bot/types/bot_command_scope_chat_administrators.cpp"
     "botctl/bot/types/bot_command_scope_chat_member.cpp"
+    "botctl/bot/types/menu_button.cpp"
+    "botctl/bot/types/menu_button_commands.cpp"
+    "botctl/bot/types/menu_button_web_app.cpp"
+    "botctl/bot/types/menu_button_default.cpp"
+    "botctl/bot/types/web_app_info.cpp"
 )
 target_link_libraries(cbot gflags pthread ${SRC_CC})
 add_dependencies(cbot rapidjson)

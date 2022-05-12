@@ -136,4 +136,5 @@ namespace bot::types::fields {
     const char* NEW_CHAT_MEMBER = "new_chat_member";
     const char* COMMAND = "command";
     const char* CHAT_ID = "chat_id";
+    const char* WEB_APP = "web_app";
 }

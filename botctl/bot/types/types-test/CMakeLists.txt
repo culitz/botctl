@@ -66,6 +66,8 @@ add_executable(
     "bot_command_scope_all_private_chats_test.cpp"
     "bot_command_scope_chat_administrators_test.cpp"
     "bot_command_scope_chat_member_test.cpp"
+    "menu_button_test.cpp"
+    "web_app_info_test.cpp"
 
     "../fields.cpp"
     "../constants.cpp"
@@ -121,6 +123,11 @@ add_executable(
     "../bot_command_scope_all_private_chats.cpp"
     "../bot_command_scope_chat_administrators.cpp"
     "../bot_command_scope_chat_member.cpp"
+    "../menu_button.cpp"
+    "../menu_button_commands.cpp"
+    "../menu_button_default.cpp"
+    "../menu_button_web_app.cpp"
+    "../web_app_info.cpp"
 )
 
 target_link_libraries(types_test GTest::GTest GTest::Main)
