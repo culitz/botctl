@@ -68,6 +68,7 @@ add_executable(
     "bot_command_scope_chat_member_test.cpp"
     "menu_button_test.cpp"
     "web_app_info_test.cpp"
+    "response_parameters_test.cpp"
 
     "../fields.cpp"
     "../constants.cpp"
@@ -128,6 +129,7 @@ add_executable(
     "../menu_button_default.cpp"
     "../menu_button_web_app.cpp"
     "../web_app_info.cpp"
+    "../response_parameters.cpp"
 )
 
 target_link_libraries(types_test GTest::GTest GTest::Main)

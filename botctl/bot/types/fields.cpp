@@ -137,4 +137,6 @@ namespace bot::types::fields {
     const char* COMMAND = "command";
     const char* CHAT_ID = "chat_id";
     const char* WEB_APP = "web_app";
+    const char* MIGRATE_TO_CHAT_ID = "migrate_to_chat_id";
+    const char* RETRY_AFTER = "retry_after";
 }

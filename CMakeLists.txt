@@ -91,6 +91,7 @@ add_executable(
     "botctl/bot/types/menu_button_web_app.cpp"
     "botctl/bot/types/menu_button_default.cpp"
     "botctl/bot/types/web_app_info.cpp"
+    "botctl/bot/types/response_parameters.cpp"
 )
 target_link_libraries(cbot gflags pthread ${SRC_CC})
 add_dependencies(cbot rapidjson)

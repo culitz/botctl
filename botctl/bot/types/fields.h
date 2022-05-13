@@ -143,4 +143,6 @@ namespace bot::types::fields {
     extern const char* COMMAND;
     extern const char* CHAT_ID;
     extern const char* WEB_APP;
+    extern const char* MIGRATE_TO_CHAT_ID;
+    extern const char* RETRY_AFTER;
 }
